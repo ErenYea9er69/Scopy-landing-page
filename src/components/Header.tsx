@@ -14,25 +14,13 @@ const Header: React.FC = () => {
           <span className="text-xl font-semibold text-white">Scopy AI</span>
         </div>
 
-        {/* Navigation Menu - Right to Left order */}
+        {/* Navigation Menu - Right to Left order: Features, Solutions, Pricing, Resources, About */}
         <nav className="hidden md:flex items-center space-x-8">
           <a 
-            href="#about" 
+            href="#features" 
             className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
-            About
-          </a>
-          <a 
-            href="#resources" 
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
-            Resources
-          </a>
-          <a 
-            href="#pricing" 
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
-            Pricing
+            Features
           </a>
           <a 
             href="#solutions" 
@@ -41,10 +29,22 @@ const Header: React.FC = () => {
             Solutions
           </a>
           <a 
-            href="#features" 
+            href="#pricing" 
             className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
-            Features
+            Pricing
+          </a>
+          <a 
+            href="#resources" 
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+          >
+            Resources
+          </a>
+          <a 
+            href="#about" 
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
+          >
+            About
           </a>
         </nav>
 
