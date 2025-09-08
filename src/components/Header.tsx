@@ -2,15 +2,15 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <header className="bg-black/70 text-white px-6 py-4 backdrop-blur-sm">
+    <header className="text-white px-6 py-4 absolute top-0 w-full">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-            <div className="w-6 h-6 bg-black rounded-full flex items-center justify-center">
-              <div className="w-3 h-3 bg-white rounded-full"></div>
-            </div>
-          </div>
+          <img 
+            src="/assets/logo.png" 
+            alt="Scopy AI Logo" 
+            className="w-8 h-8 object-contain"
+          />
           <span className="text-xl font-semibold">Scopy AI</span>
         </div>
 
