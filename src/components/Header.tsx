@@ -2,59 +2,42 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <header className="text-white px-6 py-4 absolute top-0 w-full z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo Section - Left with margin */}
-        <div className="flex items-center space-x-2 ml-4">
+    <header className="absolute top-0 left-0 right-0 z-50 p-4">
+      <div className="container mx-auto flex items-center justify-between text-white">
+        {/* Logo Section */}
+        <div className="flex items-center space-x-2">
           <img
             src="/assets/logo.png"
             alt="Scopy AI Logo"
-            className="w-8 h-8 object-contain brightness-0 invert"
+            className="h-8 w-8 object-contain brightness-0 invert"
           />
-          <span className="text-xl font-semibold text-white">Scopy AI</span>
+          <span className="text-xl font-semibold">Scopy AI</span>
         </div>
 
-        {/* Navigation Menu - Right to Left order: Features, Solutions, Pricing, Resources, About */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <a
-            href="#features"
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
+        {/* Navigation Menu */}
+        <nav className="hidden items-center space-x-8 md:flex">
+          <a href="#features" className="hover:text-gray-300">
             Features
           </a>
-          <a
-            href="#solutions"
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
+          <a href="#solutions" className="hover:text-gray-300">
             Solutions
           </a>
-          <a
-            href="#pricing"
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
+          <a href="#pricing" className="hover:text-gray-300">
             Pricing
           </a>
-          <a
-            href="#resources"
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
+          <a href="#resources" className="hover:text-gray-300">
             Resources
           </a>
-          <a
-            href="#about"
-            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
-          >
+          <a href="#about" className="hover:text-gray-300">
             About
           </a>
         </nav>
 
-        {/* Get Started Button - Extreme right with margin */}
-        <div className="flex items-center space-x-4 mr-4">
-          <button
-            className="bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 font-medium min-w-[180px]"
-          >
+        {/* Get Started Button */}
+        <div className="flex items-center">
+          <button className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-200">
             <span>↗</span>
-            <span> Get Started Now</span>
+            <span>Get Started Now</span>
           </button>
         </div>
       </div>
