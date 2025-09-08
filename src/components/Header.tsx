@@ -51,10 +51,7 @@ const Header: React.FC = () => {
         {/* Get Started Button - Extreme right with margin */}
         <div className="flex items-center space-x-4 mr-4">
           <button
-            className="bg-white text-black hover:bg-gray-100 px-8 py-3 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 font-medium border-0 cursor-pointer"
-            style={{
-              minWidth: '180px'
-            }}
+            className="bg-white text-black hover:bg-gray-100 px-6 py-3 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 font-medium min-w-[180px]"
           >
             <span>↗</span>
             <span> Get Started Now</span>
