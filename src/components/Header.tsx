@@ -4,53 +4,53 @@ const Header: React.FC = () => {
   return (
     <header className="text-white px-6 py-4 absolute top-0 w-full">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex items-center space-x-2">
+        {/* Logo Section - Left with margin */}
+        <div className="flex items-center space-x-2 ml-4">
           <img 
             src="/assets/logo.png" 
             alt="Scopy AI Logo" 
-            className="w-8 h-8 object-contain"
+            className="w-8 h-8 object-contain brightness-0 invert"
           />
-          <span className="text-xl font-semibold">Scopy AI</span>
+          <span className="text-xl font-semibold text-white">Scopy AI</span>
         </div>
 
-        {/* Navigation Menu */}
+        {/* Navigation Menu - Right to Left order */}
         <nav className="hidden md:flex items-center space-x-8">
           <a 
-            href="#features" 
-            className="text-gray-300 hover:text-white transition-colors duration-200"
+            href="#about" 
+            className="text-white hover:text-gray-300 transition-colors duration-200"
           >
-            Features
-          </a>
-          <a 
-            href="#solutions" 
-            className="text-gray-300 hover:text-white transition-colors duration-200"
-          >
-            Solutions
-          </a>
-          <a 
-            href="#pricing" 
-            className="text-gray-300 hover:text-white transition-colors duration-200"
-          >
-            Pricing
+            About
           </a>
           <a 
             href="#resources" 
-            className="text-gray-300 hover:text-white transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200"
           >
             Resources
           </a>
           <a 
-            href="#about" 
-            className="text-gray-300 hover:text-white transition-colors duration-200"
+            href="#pricing" 
+            className="text-white hover:text-gray-300 transition-colors duration-200"
           >
-            About
+            Pricing
+          </a>
+          <a 
+            href="#solutions" 
+            className="text-white hover:text-gray-300 transition-colors duration-200"
+          >
+            Solutions
+          </a>
+          <a 
+            href="#features" 
+            className="text-white hover:text-gray-300 transition-colors duration-200"
+          >
+            Features
           </a>
         </nav>
 
-        {/* Get Started Button */}
-        <div className="flex items-center space-x-4">
-          <button className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2">
+        {/* Get Started Button - Extreme right with margin */}
+        <div className="flex items-center space-x-4 mr-4">
+          <button className="bg-white hover:bg-gray-200 text-black px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2">
             <span>↗</span>
             <span>Get Started Now</span>
           </button>
