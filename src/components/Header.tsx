@@ -51,11 +51,12 @@ const Header: React.FC = () => {
         {/* Get Started Button - Extreme right with margin */}
         <div className="flex items-center space-x-4 mr-4">
           <button 
-            className="bg-white text-black hover:bg-gray-100 px-6 py-3 transition-colors duration-200 flex items-center space-x-2 font-medium border-0 cursor-pointer"
+            className="bg-white text-black hover:bg-gray-100 px-8 py-3 transition-colors duration-200 flex items-center space-x-2 font-medium border-0 cursor-pointer"
             style={{ 
               backgroundColor: '#ffffff', 
               color: '#000000',
-              borderRadius: '9999px'
+              borderRadius: '9999px',
+              minWidth: '180px'
             }}
           >
             <span>↗</span>
