@@ -54,13 +54,6 @@ const Header: React.FC = () => {
             <span>↗</span>
             <span>Get Started Now</span>
           </button>
-
-          {/* Mobile Menu Button */}
-          <button className="md:hidden flex flex-col space-y-1">
-            <div className="w-6 h-0.5 bg-white"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
-          </button>
         </div>
       </div>
     </header>
