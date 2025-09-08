@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header: React.FC = () => {
   return (
-    <header className="text-white px-6 py-4 absolute top-0 w-full">
+    <header className="text-white px-6 py-4 absolute top-0 w-full z-50">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo Section - Left with margin */}
         <div className="flex items-center space-x-2 ml-4">
@@ -18,31 +18,31 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex items-center space-x-8">
           <a 
             href="#about" 
-            className="text-white hover:text-gray-300 transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
             About
           </a>
           <a 
             href="#resources" 
-            className="text-white hover:text-gray-300 transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
             Resources
           </a>
           <a 
             href="#pricing" 
-            className="text-white hover:text-gray-300 transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
             Pricing
           </a>
           <a 
             href="#solutions" 
-            className="text-white hover:text-gray-300 transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
             Solutions
           </a>
           <a 
             href="#features" 
-            className="text-white hover:text-gray-300 transition-colors duration-200"
+            className="text-white hover:text-gray-300 transition-colors duration-200 font-medium"
           >
             Features
           </a>
@@ -50,7 +50,7 @@ const Header: React.FC = () => {
 
         {/* Get Started Button - Extreme right with margin */}
         <div className="flex items-center space-x-4 mr-4">
-          <button className="bg-white text-black hover:bg-gray-200 px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2">
+          <button className="bg-white text-black hover:bg-gray-200 px-6 py-2 rounded-full transition-colors duration-200 flex items-center space-x-2 font-medium">
             <span>↗</span>
             <span>Get Started Now</span>
           </button>
