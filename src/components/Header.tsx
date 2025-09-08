@@ -34,11 +34,17 @@ const Header: React.FC = () => {
         </nav>
 
         {/* Get Started Button */}
-        <div className="flex items-center">
-          <button className="inline-flex items-center justify-center gap-2 bg-white text-black px-3 py-4 font-medium shadow-lg transition-all duration-200 hover:bg-gray-100 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white border-0 h-16" style={{backgroundColor: '#ffffff', color: '#000000', borderRadius: '99999px'}}>           
-            <span className="text-lg">↗</span>
-            <span className="whitespace-nowrap"> Get Started Now</span>
-          </button>
+        <div className="flex items-center relative">
+          <img
+            src="/assets/pill.png"
+            alt="Get Started Button"
+            className="h-16 object-contain"
+          />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-black text-lg font-medium whitespace-nowrap">
+              ↗ Get Started Now
+            </span>
+          </div>
         </div>
       </div>
     </header>
