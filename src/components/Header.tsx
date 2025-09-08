@@ -35,7 +35,7 @@ const Header: React.FC = () => {
 
         {/* Get Started Button */}
         <div className="flex items-center">
-          <button className="flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3 font-medium text-black transition-colors hover:bg-gray-200">
+          <button className="inline-flex items-center justify-center gap-2 rounded-full bg-white !bg-white text-black !text-black px-6 py-3 font-medium shadow-sm transition-colors hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white border-0" style={{backgroundColor: '#ffffff', color: '#000000'}}>
             <span>↗</span>
             <span>Get Started Now</span>
           </button>
