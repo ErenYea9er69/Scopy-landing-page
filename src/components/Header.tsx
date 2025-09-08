@@ -38,7 +38,7 @@ const Header: React.FC = () => {
           <img
             src="/assets/pill.png"
             alt="Get Started Button"
-            className="h-20 w-45 object-contain"
+            className="h-20 w-45 object-contain brightness-110 contrast-125"
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-black text-lg font-medium whitespace-nowrap">
