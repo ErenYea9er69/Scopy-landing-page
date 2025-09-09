@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const Header: React.FC = () => {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
   return (
     <header className="absolute top-0 left-0 right-0 z-50 p-4">
       <div className="container mx-auto flex items-center justify-between text-white">
@@ -16,21 +18,25 @@ const Header: React.FC = () => {
 
         {/* Navigation Menu */}
         <nav className="hidden items-center space-x-8 md:flex">
-          <a href="#features" className="hover:text-gray-300">
-            Features
-          </a>
-          <a href="#solutions" className="hover:text-gray-300">
-            Solutions
-          </a>
-          <a href="#pricing" className="hover:text-gray-300">
-            Pricing
-          </a>
-          <a href="#resources" className="hover:text-gray-300">
-            Resources
-          </a>
-          <a href="#about" className="hover:text-gray-300">
-            About
-          </a>
+          {['features', 'solutions', 'pricing', 'resources', 'about'].map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              className="relative py-2"
+              onMouseEnter={() => setHoveredItem(item)}
+              onMouseLeave={() => setHoveredItem(null)}
+            >
+              <span className="capitalize hover:text-gray-300 transition-colors duration-300">
+                {item}
+              </span>
+              {/* Animated underline */}
+              <div 
+                className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
+                  hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
+                }`}
+              />
+            </a>
+          ))}
         </nav>
 
         {/* Get Started Button */}
