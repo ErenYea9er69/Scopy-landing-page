@@ -2,7 +2,7 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="flex min-h-screen items-center justify-center text-white">
+    <section className="flex min-h-screen items-center justify-center text-white pt-20">
       <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left Side - Text Content */}
         <div className="flex flex-col justify-center space-y-6">
@@ -22,45 +22,25 @@ const Hero: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side - Video */}
+        {/* Right Side - Circular Video */}
         <div className="flex justify-center lg:justify-end">
-          <div className="relative w-full max-w-lg lg:max-w-xl">
-            {/* Animated Border */}
-            <div className="absolute -inset-1 rounded-3xl opacity-75">
-              <div 
-                className="w-full h-full rounded-3xl"
-                style={{
-                  background: `
-                    conic-gradient(
-                      from 0deg,
-                      #dc2626 0deg,
-                      #7f1d1d 60deg,
-                      #374151 120deg,
-                      #6b7280 180deg,
-                      #374151 240deg,
-                      #dc2626 300deg,
-                      #dc2626 360deg
-                    )
-                  `,
-                  animation: 'spin 4s linear infinite'
-                }}
-              />
-            </div>
-            {/* Inner Glow */}
+          <div className="relative">
+            {/* Breathing Shadow Effect */}
             <div 
-              className="absolute -inset-0.5 rounded-3xl"
+              className="absolute -inset-8 rounded-full opacity-40"
               style={{
                 background: `
-                  radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%),
-                  linear-gradient(45deg, rgba(107, 114, 128, 0.4) 0%, rgba(55, 65, 81, 0.4) 100%)
+                  radial-gradient(circle, rgba(107, 114, 128, 0.6) 0%, rgba(75, 85, 99, 0.4) 40%, transparent 70%)
                 `,
-                filter: 'blur(1px)'
+                filter: 'blur(20px)',
+                animation: 'breathe 3s ease-in-out infinite'
               }}
             />
+            
             {/* Video Container */}
-            <div className="relative bg-black rounded-3xl p-1">
+            <div className="relative w-80 h-80 lg:w-96 lg:h-96">
               <video
-                className="w-full h-auto rounded-3xl shadow-2xl"
+                className="w-full h-full rounded-full object-cover shadow-2xl border-2 border-gray-600"
                 autoPlay
                 loop
                 muted
@@ -78,12 +58,14 @@ const Hero: React.FC = () => {
       </div>
       
       <style>{`
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
+        @keyframes breathe {
+          0%, 100% {
+            transform: scale(1);
+            opacity: 0.4;
           }
-          to {
-            transform: rotate(360deg);
+          50% {
+            transform: scale(1.05);
+            opacity: 0.6;
           }
         }
       `}</style>
