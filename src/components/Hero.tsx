@@ -24,20 +24,69 @@ const Hero: React.FC = () => {
 
         {/* Right Side - Video */}
         <div className="flex justify-center lg:justify-end">
-          <div className="w-full max-w-lg lg:max-w-xl">
-            <video
-              className="w-full h-auto rounded-lg shadow-2xl"
-              autoPlay
-              loop
-              muted
-              playsInline
-            >
-              <source src="/assets/vd1.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          <div className="relative w-full max-w-lg lg:max-w-xl">
+            {/* Animated Border */}
+            <div className="absolute -inset-1 rounded-3xl opacity-75">
+              <div 
+                className="w-full h-full rounded-3xl"
+                style={{
+                  background: `
+                    conic-gradient(
+                      from 0deg,
+                      #dc2626 0deg,
+                      #7f1d1d 60deg,
+                      #374151 120deg,
+                      #6b7280 180deg,
+                      #374151 240deg,
+                      #dc2626 300deg,
+                      #dc2626 360deg
+                    )
+                  `,
+                  animation: 'spin 4s linear infinite'
+                }}
+              />
+            </div>
+            {/* Inner Glow */}
+            <div 
+              className="absolute -inset-0.5 rounded-3xl"
+              style={{
+                background: `
+                  radial-gradient(circle, rgba(220, 38, 38, 0.3) 0%, transparent 70%),
+                  linear-gradient(45deg, rgba(107, 114, 128, 0.4) 0%, rgba(55, 65, 81, 0.4) 100%)
+                `,
+                filter: 'blur(1px)'
+              }}
+            />
+            {/* Video Container */}
+            <div className="relative bg-black rounded-3xl p-1">
+              <video
+                className="w-full h-auto rounded-3xl shadow-2xl"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{
+                  filter: 'contrast(1.1) brightness(0.95)'
+                }}
+              >
+                <source src="/assets/vd1.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+            </div>
           </div>
         </div>
       </div>
+      
+      <style jsx>{`
+        @keyframes spin {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </section>
   );
 };
