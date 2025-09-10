@@ -77,7 +77,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      <style jsx>{`
+      <style>{`
         @keyframes spin {
           from {
             transform: rotate(0deg);
