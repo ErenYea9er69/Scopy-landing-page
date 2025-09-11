@@ -1,10 +1,9 @@
-import React from 'react';
+import React from 'react'
 
 const Hero: React.FC = () => {
   return (
     <section className="flex min-h-screen items-center justify-center text-white pt-20">
       <div className="container mx-auto px-4 flex flex-col items-center text-center space-y-6">
-        {/* Main Content */}
         <h1 className="text-4xl font-bold leading-tight md:text-6xl lg:text-7xl max-w-4xl">
           Unleash AI's True Power with Scopy
         </h1>
@@ -21,7 +20,7 @@ const Hero: React.FC = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

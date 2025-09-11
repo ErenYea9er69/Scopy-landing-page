@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 const Header: React.FC = () => {
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null)
 
   return (
     <header className="absolute top-0 left-0 right-0 z-50 p-4">
       <div className="container mx-auto flex items-center justify-between text-white">
-        {/* Logo Section */}
         <div className="flex items-center space-x-2">
           <img
             src="/assets/logo.png"
@@ -16,7 +15,6 @@ const Header: React.FC = () => {
           <span className="text-xl font-semibold">Scopy AI</span>
         </div>
 
-        {/* Navigation Menu */}
         <nav className="hidden items-center space-x-8 md:flex">
           {['features', 'solutions', 'pricing', 'resources', 'about'].map((item) => (
             <a
@@ -29,7 +27,6 @@ const Header: React.FC = () => {
               <span className="capitalize hover:text-gray-300 transition-colors duration-300">
                 {item}
               </span>
-              {/* Animated underline */}
               <div 
                 className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
                   hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
@@ -39,7 +36,6 @@ const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Get Started Button */}
         <div className="flex items-center relative">
           <img
             src="/assets/pill.png"
@@ -54,7 +50,7 @@ const Header: React.FC = () => {
         </div>
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
