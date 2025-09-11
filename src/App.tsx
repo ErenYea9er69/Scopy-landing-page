@@ -1,139 +1,111 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
-const DebugPanel = ({ videoRef }) => {
-  const [debugInfo, setDebugInfo] = useState({
-    videoSrc: '/assets/vd.mp4',
-    videoWidth: 0,
-    videoHeight: 0,
-    videoDuration: 0,
-    videoState: 'loading',
-    error: null
-  });
+const VideoBackground = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const [videoError, setVideoError] = useState<string | null>(null);
 
   useEffect(() => {
-    const updateVideoInfo = () => {
-      if (videoRef.current) {
-        setDebugInfo(prev => ({
-          ...prev,
-          videoWidth: videoRef.current.videoWidth,
-          videoHeight: videoRef.current.videoHeight,
-          videoDuration: videoRef.current.duration,
-          videoState: videoRef.current.readyState > 2 ? 'ready' : 'loading'
-        }));
-      }
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleLoadedData = () => {
+      setVideoLoaded(true);
+      console.log('Video loaded successfully');
     };
 
-    if (videoRef.current) {
-      videoRef.current.addEventListener('loadedmetadata', updateVideoInfo);
-      videoRef.current.addEventListener('canplay', updateVideoInfo);
-      videoRef.current.addEventListener('error', (e) => {
-        setDebugInfo(prev => ({
-          ...prev,
-          videoState: 'error',
-          error: videoRef.current.error ? videoRef.current.error.message : 'Unknown error'
-        }));
+    const handleError = (e: Event) => {
+      const error = (e.target as HTMLVideoElement).error;
+      setVideoError(error ? error.message : 'Video failed to load');
+      console.error('Video error:', error);
+    };
+
+    const handleCanPlay = () => {
+      video.play().catch(err => {
+        console.log('Autoplay prevented:', err);
       });
-    }
+    };
+
+    video.addEventListener('loadeddata', handleLoadedData);
+    video.addEventListener('error', handleError);
+    video.addEventListener('canplay', handleCanPlay);
+
+    // Force load the video
+    video.load();
 
     return () => {
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('loadedmetadata', updateVideoInfo);
-        videoRef.current.removeEventListener('canplay', updateVideoInfo);
-      }
+      video.removeEventListener('loadeddata', handleLoadedData);
+      video.removeEventListener('error', handleError);
+      video.removeEventListener('canplay', handleCanPlay);
     };
-  }, [videoRef]);
+  }, []);
 
   return (
-    <div className="fixed bottom-4 right-4 bg-black bg-opacity-70 text-white p-4 rounded-lg text-xs max-w-xs z-50">
-      <h3 className="font-bold mb-2">Video Debug Info</h3>
-      <ul>
-        <li>Source: {debugInfo.videoSrc}</li>
-        <li>Dimensions: {debugInfo.videoWidth} × {debugInfo.videoHeight}</li>
-        <li>Duration: {debugInfo.videoDuration.toFixed(2)}s</li>
-        <li>State: {debugInfo.videoState}</li>
-        {debugInfo.error && <li className="text-red-400">Error: {debugInfo.error}</li>}
-      </ul>
-      <div className="mt-2">
-        <button 
-          className="bg-blue-500 hover:bg-blue-600 px-2 py-1 rounded mr-2"
-          onClick={() => videoRef.current.play()}
-        >
-          Play
-        </button>
-        <button 
-          className="bg-gray-500 hover:bg-gray-600 px-2 py-1 rounded"
-          onClick={() => videoRef.current.pause()}
-        >
-          Pause
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const Background = () => {
-  const videoRef = useRef(null);
-  const [showDebug, setShowDebug] = useState(true);
-
-  return (
-    <div className="fixed inset-0 z-0">
+    <div className="fixed inset-0 w-full h-full overflow-hidden">
       <video
         ref={videoRef}
-        className="w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover"
         autoPlay
         loop
         muted
         playsInline
+        preload="auto"
       >
-        {/* Try multiple sources for better compatibility */}
         <source src="/assets/vd.mp4" type="video/mp4" />
-        <source src="/assets/vd.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
+      
       {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-50" />
+      <div className="absolute inset-0 bg-black/40" />
       
-      {/* Debug toggle button */}
-      <button 
-        className="absolute top-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-full z-50"
-        onClick={() => setShowDebug(!showDebug)}
-      >
-        🐞
-      </button>
+      {/* Loading indicator */}
+      {!videoLoaded && !videoError && (
+        <div className="absolute inset-0 bg-black flex items-center justify-center">
+          <div className="text-white text-xl">Loading video...</div>
+        </div>
+      )}
       
-      {/* Debug panel */}
-      {showDebug && <DebugPanel videoRef={videoRef} />}
+      {/* Error message */}
+      {videoError && (
+        <div className="absolute inset-0 bg-black flex items-center justify-center">
+          <div className="text-red-500 text-center">
+            <div className="text-xl mb-2">Video Error</div>
+            <div className="text-sm">{videoError}</div>
+            <div className="text-xs mt-2 text-gray-400">
+              Make sure vd.mp4 is in public/assets/vd.mp4
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 const Header = () => {
-  const [hoveredItem, setHoveredItem] = useState(null);
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 p-4">
-      <div className="container mx-auto flex items-center justify-between text-white">
-        <div className="flex items-center space-x-2">
-          <img
-            src="/assets/logo.png"
-            alt="Scopy AI Logo"
-            className="h-8 w-8 object-contain brightness-0 invert"
-          />
-          <span className="text-xl font-semibold">Scopy AI</span>
+    <header className="relative z-20 p-6">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Logo */}
+        <div className="flex items-center space-x-3">
+          <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+            <span className="text-black font-bold text-lg">S</span>
+          </div>
+          <span className="text-white text-2xl font-bold">Scopy AI</span>
         </div>
 
-        <nav className="hidden items-center space-x-8 md:flex">
-          {['features', 'solutions', 'pricing', 'resources', 'about'].map((item) => (
+        {/* Navigation */}
+        <nav className="hidden md:flex items-center space-x-8">
+          {['Features', 'Solutions', 'Pricing', 'Resources', 'About'].map((item) => (
             <a
               key={item}
-              href={`#${item}`}
-              className="relative py-2"
+              href={`#${item.toLowerCase()}`}
+              className="relative text-white hover:text-gray-300 transition-colors duration-300 py-2"
               onMouseEnter={() => setHoveredItem(item)}
               onMouseLeave={() => setHoveredItem(null)}
             >
-              <span className="capitalize hover:text-gray-300 transition-colors duration-300">
-                {item}
-              </span>
+              {item}
               <div 
                 className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
                   hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
@@ -143,18 +115,11 @@ const Header = () => {
           ))}
         </nav>
 
-        <div className="flex items-center relative">
-          <img
-            src="/assets/pill.png"
-            alt="Get Started Button"
-            className="h-20 w-45 object-contain brightness-130 contrast-100"
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-black text-lg font-medium whitespace-nowrap">
-              ↗ Get Started Now
-            </span>
-          </div>
-        </div>
+        {/* CTA Button */}
+        <button className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300 flex items-center space-x-2">
+          <span>Get Started Now</span>
+          <span>↗</span>
+        </button>
       </div>
     </header>
   );
@@ -162,19 +127,21 @@ const Header = () => {
 
 const Hero = () => {
   return (
-    <section className="flex min-h-screen items-center justify-center text-white pt-20">
-      <div className="container mx-auto px-4 flex flex-col items-center text-center space-y-6">
-        <h1 className="text-4xl font-bold leading-tight md:text-6xl lg:text-7xl max-w-4xl">
+    <section className="relative z-10 min-h-screen flex items-center justify-center">
+      <div className="max-w-5xl mx-auto px-6 text-center text-white">
+        <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
           Unleash AI's True Power with Scopy
         </h1>
-        <p className="text-lg text-gray-300 md:text-xl lg:text-2xl leading-relaxed max-w-3xl">
+        
+        <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-10 max-w-4xl mx-auto">
           Transform your creative workflow with our revolutionary AI platform. Generate compelling content, craft stunning visuals, and automate complex tasks—all in one seamless experience.
         </p>
-        <div className="flex space-x-4 pt-4">
-          <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors duration-300">
+        
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+          <button className="bg-white text-black px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-200 transition-colors duration-300 w-full sm:w-auto">
             Start Creating Now
           </button>
-          <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300">
+          <button className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300 w-full sm:w-auto">
             Watch Demo
           </button>
         </div>
@@ -186,13 +153,9 @@ const Hero = () => {
 const App = () => {
   return (
     <div className="relative min-h-screen">
-      <Background />
-      <div className="relative z-10">
-        <Header />
-        <main>
-          <Hero />
-        </main>
-      </div>
+      <VideoBackground />
+      <Header />
+      <Hero />
     </div>
   );
 };
