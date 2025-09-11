@@ -2,7 +2,7 @@ import React from 'react';
 
 const Background: React.FC = () => {
   return (
-    <div className="fixed inset-0 z-[-1]">
+    <div className="absolute inset-0 z-0">
       <video
         className="w-full h-full object-cover"
         autoPlay
