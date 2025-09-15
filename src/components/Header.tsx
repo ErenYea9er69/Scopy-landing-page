@@ -45,6 +45,7 @@ const Header: React.FC = () => {
             src="/assets/pill.png"
             alt="Get Started Button"
             className="h-20 w-45 object-contain brightness-130 contrast-100"
+            style={{ mixBlendMode: 'screen' }}
           />
           <div className="absolute inset-0 flex items-center justify-center">
             <span className="text-black text-lg font-medium whitespace-nowrap">
