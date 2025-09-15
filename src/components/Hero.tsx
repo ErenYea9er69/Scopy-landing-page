@@ -21,6 +21,10 @@ const Hero: React.FC = () => {
           <div className="w-full max-w-lg">
             <video
               className="w-full h-auto rounded-lg shadow-lg"
+              style={{
+                mixBlendMode: 'screen', // This will blend the video with background, making dark areas transparent
+                filter: 'contrast(1.2) brightness(1.1)' // Enhance the blue sphere
+              }}
               autoPlay
               loop
               muted
