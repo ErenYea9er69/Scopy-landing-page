@@ -10,9 +10,30 @@ const Hero: React.FC = () => {
             <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
               Unlock the Full Potential of AI with Scopy
             </h1>
-            <p className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl">
+            <p className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl mb-8">
               Generate content, create stunning visuals, and streamline your workflow with our all-in-one creative platform.
             </p>
+            
+            {/* Buttons Section */}
+            <div className="flex items-center space-x-4">
+              {/* Primary Pill Button */}
+              <div className="relative group">
+                <div className="h-14 bg-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105">
+                  <span className="text-black text-lg font-semibold whitespace-nowrap">
+                    ↗ Get Started Now
+                  </span>
+                </div>
+              </div>
+              
+              {/* Secondary Button */}
+              <div className="relative group">
+                <div className="h-14 bg-transparent border-2 border-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-white hover:scale-105 group">
+                  <span className="text-white text-lg font-semibold whitespace-nowrap group-hover:text-black transition-colors duration-300">
+                    Watch Demo
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         
