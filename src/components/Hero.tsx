@@ -8,10 +8,10 @@ const Hero: React.FC = () => {
         <div className="flex-1 text-white pr-12 lg:pr-16 pl-4 lg:pl-8">
           <div className="max-w-2xl">
             <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-              Unlock the Full Potential of AI with Scopy
+              AI Business Coach for Data-Driven Growth
             </h1>
             <p className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl mb-8">
-              Generate content, create stunning visuals, and streamline your workflow with our all-in-one creative platform.
+              Get personalized business guidance. Analyze market data. Track competitors. Optimize pricing strategies. Make informed decisions with economic insights.
             </p>
             
             {/* Buttons Section */}
