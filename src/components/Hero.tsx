@@ -25,12 +25,21 @@ const Hero: React.FC = () => {
                 </div>
               </div>
               
-              {/* Secondary Button */}
+              {/* Secondary Button with Play Icon */}
               <div className="relative group">
                 <div className="h-14 bg-transparent border-2 border-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-white hover:scale-105 group">
-                  <span className="text-white text-lg font-semibold whitespace-nowrap group-hover:text-black transition-colors duration-300">
-                    Watch Demo
-                  </span>
+                  <div className="flex items-center space-x-2">
+                    <svg 
+                      className="w-5 h-5 text-white group-hover:text-black transition-colors duration-300" 
+                      fill="currentColor" 
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
+                    </svg>
+                    <span className="text-white text-lg font-semibold whitespace-nowrap group-hover:text-black transition-colors duration-300">
+                      Watch Demo
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
