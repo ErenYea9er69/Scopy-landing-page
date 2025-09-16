@@ -41,16 +41,10 @@ const Header: React.FC = () => {
 
         {/* Get Started Button */}
         <div className="flex items-center relative">
-          <img
-            src="/assets/pill.png"
-            alt="Get Started Button"
-            className="h-20 w-45 object-contain"
-            style={{ 
-              mixBlendMode: 'screen',
-              filter: 'brightness(1.5) contrast(1.2)'
-            }}
-          />
-          <div className="absolute inset-0 flex items-center justify-center">
+          <div 
+            className="h-20 w-45 bg-white rounded-full flex items-center justify-center"
+            style={{ width: '180px' }}
+          >
             <span className="text-black text-lg font-medium whitespace-nowrap">
               ↗ Get Started Now
             </span>
