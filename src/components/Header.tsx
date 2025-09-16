@@ -42,7 +42,7 @@ const Header: React.FC = () => {
         {/* Get Started Button */}
         <div className="flex items-center relative">
           <div 
-            className="h-20 w-45 bg-white rounded-full flex items-center justify-center"
+            className="h-12 w-45 bg-white rounded-full flex items-center justify-center"
             style={{ width: '180px' }}
           >
             <span className="text-black text-lg font-medium whitespace-nowrap">
