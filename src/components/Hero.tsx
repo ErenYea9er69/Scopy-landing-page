@@ -8,10 +8,10 @@ const Hero: React.FC = () => {
         <div className="flex-1 text-white pr-12 lg:pr-16 pl-4 lg:pl-8">
           <div className="max-w-2xl">
             <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6">
-              AI Coach Generated $2.3M Using Emotional Triggers
+              Scopy Generated $2.3M Using Emotional Triggers
             </h1>
             <p className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl mb-8">
-              Our AI coach targets your customer's emotional decision center. We studied 10,000 sales conversations. Emotional triggers beat logic by 347%. Companies using our method close 73% more deals. Get specific scripts that bypass skepticism and create urgency.
+              Scopy targets your customer's emotional decision center. We studied 10,000 sales conversations. Emotional triggers beat logic by 347%. Companies using Scopy close 73% more deals. Get specific scripts that bypass skepticism and create urgency.
             </p>
             
             {/* Buttons Section */}
