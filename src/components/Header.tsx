@@ -18,12 +18,12 @@ const Header: React.FC = () => {
 
         {/* Navigation Menu */}
         <nav className="hidden items-center space-x-8 md:flex">
-          {['features', 'solutions', 'pricing', 'resources', 'about'].map((item) => (
+          {['Features', 'Solutions', 'Pricing', 'Resources'].map((item) => (
             <a
-              key={item}
-              href={`#${item}`}
+              key={item.toLowerCase()}
+              href={`#${item.toLowerCase()}`}
               className="relative py-2"
-              onMouseEnter={() => setHoveredItem(item)}
+              onMouseEnter={() => setHoveredItem(item.toLowerCase())}
               onMouseLeave={() => setHoveredItem(null)}
             >
               <span className="capitalize hover:text-gray-300 transition-colors duration-300">
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
               {/* Animated underline */}
               <div 
                 className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
-                  hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
+                  hoveredItem === item.toLowerCase() ? 'w-full opacity-100' : 'w-0 opacity-0'
                 }`}
               />
             </a>
@@ -44,7 +44,7 @@ const Header: React.FC = () => {
           <div className="relative group">
             <div className="h-12 bg-white rounded-full flex items-center justify-center px-6 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105">
               <span className="text-black text-lg font-medium whitespace-nowrap">
-                ↗ Get Started Now
+                ↗ Get Started
               </span>
             </div>
           </div>
