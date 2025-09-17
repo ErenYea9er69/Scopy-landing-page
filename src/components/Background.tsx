@@ -24,4 +24,4 @@ const Background: React.FC = () => {
   );
 };
 
-export default Background;;
+export default Background;

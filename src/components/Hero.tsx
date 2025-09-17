@@ -47,7 +47,7 @@ const Hero: React.FC = () => {
               >
                 <div className="h-14 bg-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 overflow-hidden relative">
                   <span className="text-black text-lg font-semibold whitespace-nowrap relative z-10">
-                    <span className="text-black">↗</span> Get Started Free
+                    <span className="text-black bg-transparent">↗</span> Get Started Free
                   </span>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
                 </div>
