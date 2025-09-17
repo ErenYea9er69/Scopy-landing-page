@@ -46,9 +46,24 @@ const Hero: React.FC = () => {
                 className="relative group"
               >
                 <div className="h-14 bg-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 overflow-hidden relative">
-                  <span className="text-black text-lg font-semibold whitespace-nowrap relative z-10">
-                    <span className="text-black bg-transparent">↗</span> Get Started Free
-                  </span>
+                  <div className="flex items-center space-x-2 relative z-10">
+                    <svg 
+                      className="w-5 h-5 text-black" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                      strokeWidth="2"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        d="m7 17 10-10M17 7H7v10" 
+                      />
+                    </svg>
+                    <span className="text-black text-lg font-semibold whitespace-nowrap">
+                      Get Started Free
+                    </span>
+                  </div>
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
                 </div>
               </motion.div>

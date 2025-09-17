@@ -67,9 +67,24 @@ const Header: React.FC = () => {
         <div className="flex items-center relative">
           <div className="relative group">
             <div className="h-12 bg-white rounded-full flex items-center justify-center px-6 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105">
-              <span className="text-black text-lg font-medium whitespace-nowrap">
-                <span className="text-black bg-transparent">↗</span> Get Started
-              </span>
+              <div className="flex items-center space-x-2">
+                <svg 
+                  className="w-4 h-4 text-black" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    d="m7 17 10-10M17 7H7v10" 
+                  />
+                </svg>
+                <span className="text-black text-lg font-medium whitespace-nowrap">
+                  Get Started
+                </span>
+              </div>
             </div>
           </div>
         </div>
