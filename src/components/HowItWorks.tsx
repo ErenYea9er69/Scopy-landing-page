@@ -39,13 +39,13 @@ const HowItWorks: React.FC = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Connecting line with animation */}
+          {/* Connecting line with corrected animation */}
           <motion.div 
-            initial={{ width: 0 }}
-            whileInView={{ width: "100%" }}
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
             transition={{ duration: 1, delay: 0.5 }}
             viewport={{ once: true }}
-            className="hidden md:block absolute top-16 left-1/4 right-1/4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform -translate-y-1/2 rounded-full"
+            className="hidden md:block absolute top-16 left-1/4 right-1/4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform -translate-y-1/2 rounded-full origin-left"
           ></motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
