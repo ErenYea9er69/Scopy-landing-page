@@ -68,7 +68,7 @@ const Header: React.FC = () => {
           <div className="relative group">
             <div className="h-12 bg-white rounded-full flex items-center justify-center px-6 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105">
               <span className="text-black text-lg font-medium whitespace-nowrap">
-                ↗ Get Started
+                <span className="text-black">↗</span> Get Started
               </span>
             </div>
           </div>
