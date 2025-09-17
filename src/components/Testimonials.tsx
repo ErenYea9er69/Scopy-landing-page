@@ -24,7 +24,7 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-6">
+    <section id="testimonials" className="py-20 px-6">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,20 +49,29 @@ const Testimonials: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700 hover:border-blue-500 transition-all duration-300"
+              className="group cursor-pointer relative"
+              whileHover={{ scale: 1.03, rotateX: 5, rotateY: 5 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="flex items-center mb-6">
-                <img 
-                  src={testimonial.avatar} 
-                  alt={testimonial.name} 
-                  className="w-12 h-12 rounded-full mr-4"
-                />
-                <div>
-                  <h4 className="text-white font-semibold">{testimonial.name}</h4>
-                  <p className="text-gray-400 text-sm">{testimonial.role}</p>
+              <div className="bg-gray-800 bg-opacity-50 backdrop-blur-lg rounded-2xl p-8 border border-gray-700 hover:border-transparent transition-all duration-500 relative overflow-hidden">
+                {/* Gradient border effect */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                <div className="absolute inset-1 rounded-xl bg-gray-800 bg-opacity-50 backdrop-blur-lg"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-6">
+                    <img 
+                      src={testimonial.avatar} 
+                      alt={testimonial.name} 
+                      className="w-12 h-12 rounded-full mr-4 group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <div>
+                      <h4 className="text-white font-semibold">{testimonial.name}</h4>
+                      <p className="text-gray-400 text-sm">{testimonial.role}</p>
+                    </div>
+                  </div>
+                  <p className="text-gray-300 italic">"{testimonial.content}"</p>
                 </div>
               </div>
-              <p className="text-gray-300 italic">"{testimonial.content}"</p>
             </motion.div>
           ))}
         </div>

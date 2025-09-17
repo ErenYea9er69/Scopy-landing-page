@@ -1,6 +1,13 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer className="bg-gray-900 border-t border-gray-800 py-12 px-6">
       <div className="container mx-auto">
@@ -24,7 +31,7 @@ const Footer: React.FC = () => {
                   href="#" 
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  <div className="w-6 h-6 bg-gray-700 rounded-full"></div>
+                  <div className="w-6 h-6 bg-gray-700 rounded-full hover:bg-blue-500 transition-colors duration-300"></div>
                 </a>
               ))}
             </div>
@@ -51,7 +58,15 @@ const Footer: React.FC = () => {
                   <li key={linkIndex}>
                     <a 
                       href="#" 
-                      className="text-gray-400 hover:text-white transition-colors duration-300"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        if (link.toLowerCase() === 'features') {
+                          scrollToSection('features');
+                        } else if (link.toLowerCase() === 'solutions') {
+                          scrollToSection('howitworks');
+                        }
+                      }}
+                      className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
                     >
                       {link}
                     </a>

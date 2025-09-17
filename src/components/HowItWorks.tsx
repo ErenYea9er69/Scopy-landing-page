@@ -21,7 +21,7 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 px-6 bg-gray-900 bg-opacity-50">
+    <section id="howitworks" className="py-20 px-6 bg-gray-900 bg-opacity-50">
       <div className="container mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -39,8 +39,14 @@ const HowItWorks: React.FC = () => {
         </motion.div>
 
         <div className="relative">
-          {/* Connecting line */}
-          <div className="hidden md:block absolute top-16 left-1/4 right-1/4 h-1 bg-blue-500 transform -translate-y-1/2"></div>
+          {/* Connecting line with animation */}
+          <motion.div 
+            initial={{ width: 0 }}
+            whileInView={{ width: "100%" }}
+            transition={{ duration: 1, delay: 0.5 }}
+            viewport={{ once: true }}
+            className="hidden md:block absolute top-16 left-1/4 right-1/4 h-1 bg-gradient-to-r from-blue-500 to-purple-500 transform -translate-y-1/2 rounded-full"
+          ></motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {steps.map((step, index) => (
@@ -53,9 +59,15 @@ const HowItWorks: React.FC = () => {
                 className="relative"
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl font-bold mb-6 z-10 relative">
+                  <motion.div 
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+                    viewport={{ once: true }}
+                    className="w-16 h-16 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center text-white text-xl font-bold mb-6 z-10 relative shadow-lg"
+                  >
                     {step.icon}
-                  </div>
+                  </motion.div>
                   <h3 className="text-xl font-bold text-white mb-4">{step.title}</h3>
                   <p className="text-gray-300">{step.description}</p>
                 </div>

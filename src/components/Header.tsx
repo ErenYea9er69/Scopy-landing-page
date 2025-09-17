@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const Header: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
-    <header className="absolute top-0 left-0 right-0 z-50 p-4">
+    <header className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-700' 
+        : 'bg-transparent'
+    }`}>
       <div className="container mx-auto flex items-center justify-between text-white">
         {/* Logo Section */}
         <div className="flex items-center space-x-2">
@@ -18,21 +38,25 @@ const Header: React.FC = () => {
 
         {/* Navigation Menu */}
         <nav className="hidden items-center space-x-8 md:flex">
-          {['Features', 'Solutions', 'Pricing', 'Resources'].map((item) => (
+          {['features', 'howitworks', 'testimonials', 'resources'].map((item) => (
             <a
-              key={item.toLowerCase()}
-              href={`#${item.toLowerCase()}`}
-              className="relative py-2"
-              onMouseEnter={() => setHoveredItem(item.toLowerCase())}
+              key={item}
+              href={`#${item}`}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(item);
+              }}
+              className="relative py-2 cursor-pointer"
+              onMouseEnter={() => setHoveredItem(item)}
               onMouseLeave={() => setHoveredItem(null)}
             >
               <span className="capitalize hover:text-gray-300 transition-colors duration-300">
-                {item}
+                {item === 'howitworks' ? 'How It Works' : item.charAt(0).toUpperCase() + item.slice(1)}
               </span>
               {/* Animated underline */}
               <div 
                 className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
-                  hoveredItem === item.toLowerCase() ? 'w-full opacity-100' : 'w-0 opacity-0'
+                  hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
                 }`}
               />
             </a>
