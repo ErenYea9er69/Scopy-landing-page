@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.7 }}
               className="text-lg lg:text-xl text-gray-300 leading-relaxed max-w-xl mb-8"
             >
-              Scopy AI helps entrepreneurs solve the three critical problems of business: what to sell, how to find buyers, and how to maximize revenue. Built on proven frameworks from the $100M Offers methodology.
+              Scopy AI helps entrepreneurs solve the three critical problems of business: what to sell, how to find buyers, and how to maximize revenue.
             </motion.p>
             
             {/* Buttons Section */}
