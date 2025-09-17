@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
                       <path 
                         strokeLinecap="round" 
                         strokeLinejoin="round" 
-                        d="m7 17 10-10M17 7H7v10" 
+                        d="M4 20L20 4M13 4h7v7" 
                       />
                     </svg>
                     <span className="text-black text-lg font-semibold whitespace-nowrap">
