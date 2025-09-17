@@ -13,9 +13,15 @@ const Header: React.FC = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    if (sectionId === 'home') {
+      // Scroll to top for home
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Scroll to specific section
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -38,7 +44,7 @@ const Header: React.FC = () => {
 
         {/* Navigation Menu */}
         <nav className="hidden items-center space-x-8 md:flex">
-          {['features', 'howitworks', 'testimonials', 'resources'].map((item) => (
+          {['home', 'features', 'howitworks', 'testimonials', 'resources'].map((item) => (
             <a
               key={item}
               href={`#${item}`}
