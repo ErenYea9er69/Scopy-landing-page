@@ -8,20 +8,24 @@ const Features: React.FC = () => {
       description: "Find qualified prospects through Warm Outreach, Free Content Marketing, Cold Outreach, and Paid Advertising. Get complete channel action plans, outreach scripts, and a 90-day implementation roadmap.",
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 0 014 0z" />
         </svg>
       ),
-      isMain: true
+      isMain: true,
+      gradientClass: "from-emerald-500 to-teal-500",
+      borderGradient: "from-emerald-500 via-teal-500 via-cyan-500 to-emerald-500"
     },
     {
       title: "The Offer Architect 🎯",
-      description: "Create irresistible Grand Slam Offers using the Value Equation. Get AI-generated names, deliverables, guarantees, bonuses, and value-based pricing strategies.",
+      description: "Create irresistible Grand Slam Offers using the Value Equation. Get AI-generated names, deliverables, guarantees, and value-based pricing strategies.",
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      isMain: true
+      isMain: true,
+      gradientClass: "from-teal-500 to-cyan-500",
+      borderGradient: "from-teal-500 via-cyan-500 via-blue-500 to-teal-500"
     },
     {
       title: "The Money Model Architect 💰",
@@ -31,7 +35,9 @@ const Features: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      isMain: true
+      isMain: true,
+      gradientClass: "from-cyan-500 to-blue-500",
+      borderGradient: "from-cyan-500 via-blue-500 via-indigo-500 to-cyan-500"
     },
     {
       title: "Lead Magnet Creation",
@@ -41,7 +47,9 @@ const Features: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
-      isMain: false
+      isMain: false,
+      gradientClass: "from-blue-500 to-indigo-500",
+      borderGradient: "from-blue-500 via-indigo-500 via-purple-500 to-blue-500"
     },
     {
       title: "Value Equation Optimization",
@@ -51,7 +59,9 @@ const Features: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
-      isMain: false
+      isMain: false,
+      gradientClass: "from-indigo-500 to-purple-500",
+      borderGradient: "from-indigo-500 via-purple-500 via-pink-500 to-indigo-500"
     },
     {
       title: "Complete Funnel Modeling",
@@ -61,7 +71,9 @@ const Features: React.FC = () => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
         </svg>
       ),
-      isMain: false
+      isMain: false,
+      gradientClass: "from-purple-500 to-pink-500",
+      borderGradient: "from-purple-500 via-pink-500 via-rose-500 to-purple-500"
     }
   ];
 
@@ -118,16 +130,12 @@ const Features: React.FC = () => {
                   <div className={`
                     absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 
                     transition-opacity duration-700 blur-sm animate-border-pulse
-                    ${feature.isMain 
-                      ? 'bg-gradient-to-r from-emerald-500 via-teal-500 via-cyan-500 to-emerald-500' 
-                      : 'bg-gradient-to-r from-cyan-500 via-teal-500 via-emerald-500 to-cyan-500'}
+                    bg-gradient-to-r ${feature.borderGradient}
                   `}></div>
                   <div className={`
                     absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 
                     transition-opacity duration-700 blur-[2px]
-                    ${feature.isMain 
-                      ? 'bg-gradient-to-r from-emerald-500 via-teal-500 via-cyan-500 to-emerald-500' 
-                      : 'bg-gradient-to-r from-cyan-500 via-teal-500 via-emerald-500 to-cyan-500'}
+                    bg-gradient-to-r ${feature.borderGradient}
                   `}></div>
                 </div>
                 
@@ -136,9 +144,7 @@ const Features: React.FC = () => {
                   <div className="mb-6">
                     <div className={`
                       inline-flex items-center justify-center p-3 rounded-2xl
-                      ${feature.isMain 
-                        ? 'bg-gradient-to-br from-emerald-500 to-teal-500' 
-                        : 'bg-gradient-to-br from-cyan-500 to-teal-600'}
+                      bg-gradient-to-br ${feature.gradientClass}
                       text-white shadow-lg
                       ${feature.isMain ? 'group-hover:animate-pulse-slow' : ''}
                     `}>
@@ -148,9 +154,7 @@ const Features: React.FC = () => {
                   
                   <h3 className={`
                     text-xl font-bold mb-4
-                    ${feature.isMain 
-                      ? 'bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500' 
-                      : 'bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-600'}
+                    bg-clip-text text-transparent bg-gradient-to-r ${feature.gradientClass}
                   `}>
                     {feature.title}
                   </h3>
@@ -169,7 +173,7 @@ const Features: React.FC = () => {
       </div>
       
       {/* Custom animations */}
-      <style >{`
+      <style>{`
         @keyframes border-pulse {
           0% { background-position: 0% 50%; }
           50% { background-position: 100% 50%; }
