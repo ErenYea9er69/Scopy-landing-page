@@ -37,11 +37,11 @@ const Header: React.FC = () => {
   const headerOpacity = 0.8 + (scrollProgress * 0.2);
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[2000ms] ease-out ${
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-[20000ms] ease-out ${
       isPillMode ? 'p-2' : 'p-4'
     }`}>
       <div 
-        className={`mx-auto flex items-center justify-between text-white transition-all duration-[2000ms] ease-out ${
+        className={`mx-auto flex items-center justify-between text-white transition-all duration-[20000ms] ease-out ${
           isPillMode 
             ? 'max-w-fit bg-gray-900 bg-opacity-90 backdrop-blur-md border border-gray-700 rounded-full px-6 py-3 shadow-2xl' 
             : isScrolled 
@@ -53,27 +53,27 @@ const Header: React.FC = () => {
           opacity: headerOpacity,
         }}
       >
-        <div className={`flex items-center transition-all duration-[2000ms] ${
-          isPillMode ? 'space-x-1' : 'space-x-2'
+        <div className={`flex items-center transition-all duration-[20000ms] ${
+          isPillMode ? 'space-x-1 mr-4' : 'space-x-2 mr-8'
         }`}>
           <img
             src="/assets/logo.png"
             alt="Scopy AI Logo"
-            className={`object-contain brightness-0 invert transition-all duration-[2000ms] ${
+            className={`object-contain brightness-0 invert transition-all duration-[20000ms] ${
               isPillMode ? 'h-6 w-6' : 'h-8 w-8'
             }`}
           />
-          <span className={`font-semibold transition-all duration-[2000ms] ${
+          <span className={`font-semibold transition-all duration-[20000ms] ${
             isPillMode ? 'text-lg' : 'text-xl'
           }`}>
             Scopy AI
           </span>
         </div>
 
-        <div className={`flex-1 flex justify-center transition-all duration-[2000ms] ${
+        <div className={`flex-1 flex justify-center transition-all duration-[20000ms] ${
           isPillMode ? 'px-4' : 'px-8'
         }`}>
-          <nav className={`hidden items-center md:flex transition-all duration-[2000ms] ${
+          <nav className={`hidden items-center md:flex transition-all duration-[20000ms] ${
             isPillMode ? 'space-x-4' : 'space-x-8'
           }`}>
             {['home', 'features', 'testimonials', 'pricing'].map((item) => (
@@ -105,14 +105,14 @@ const Header: React.FC = () => {
 
         <div className="flex items-center relative">
           <div className="relative group">
-            <div className={`bg-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-[2000ms] hover:bg-gray-100 hover:scale-105 ${
+            <div className={`bg-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-[20000ms] hover:bg-gray-100 hover:scale-105 ml-4 ${
               isPillMode ? 'h-10 px-4' : 'h-12 px-6'
             }`}>
-              <div className={`flex items-center transition-all duration-[2000ms] ${
+              <div className={`flex items-center transition-all duration-[20000ms] ${
                 isPillMode ? 'space-x-1' : 'space-x-2'
               }`}>
                 <svg 
-                  className={`text-black transition-all duration-[2000ms] ${
+                  className={`text-black transition-all duration-[20000ms] ${
                     isPillMode ? 'w-3 h-3' : 'w-4 h-4'
                   }`}
                   fill="none" 
@@ -126,7 +126,7 @@ const Header: React.FC = () => {
                     d="M4 20L20 4M13 4h7v7" 
                   />
                 </svg>
-                <span className={`text-black font-medium whitespace-nowrap transition-all duration-[2000ms] ${
+                <span className={`text-black font-medium whitespace-nowrap transition-all duration-[20000ms] ${
                   isPillMode ? 'text-sm' : 'text-lg'
                 }`}>
                   Get Started
