@@ -3,21 +3,33 @@ import React, { useState, useEffect } from 'react';
 const Header: React.FC = () => {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isPillMode, setIsPillMode] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight; // Approximate hero height
+      const triggerPoint = heroHeight * 0.4; // 40% of hero section
+      
+      setIsScrolled(scrollY > 10);
+      
+      // Calculate scroll progress (0 to 1) up to the trigger point
+      const progress = Math.min(scrollY / triggerPoint, 1);
+      setScrollProgress(progress);
+      
+      // Switch to pill mode when we reach 40% of hero
+      setIsPillMode(scrollY > triggerPoint);
     };
+    
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToSection = (sectionId: string) => {
     if (sectionId === 'home') {
-      // Scroll to top for home
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Scroll to specific section
       const element = document.getElementById(sectionId);
       if (element) {
         element.scrollIntoView({ behavior: 'smooth' });
@@ -25,25 +37,49 @@ const Header: React.FC = () => {
     }
   };
 
+  // Calculate dynamic styles based on scroll progress
+  const headerScale = 1 - (scrollProgress * 0.3); // Scale from 1 to 0.7
+  const headerOpacity = 0.8 + (scrollProgress * 0.2); // Opacity from 0.8 to 1
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 p-4 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-700' 
-        : 'bg-transparent'
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
+      isPillMode ? 'p-2' : 'p-4'
     }`}>
-      <div className="container mx-auto flex items-center justify-between text-white">
+      <div 
+        className={`mx-auto flex items-center justify-between text-white transition-all duration-500 ease-out ${
+          isPillMode 
+            ? 'max-w-fit bg-gray-900 bg-opacity-90 backdrop-blur-md border border-gray-700 rounded-full px-6 py-3 shadow-2xl' 
+            : isScrolled 
+              ? 'container bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-700' 
+              : 'container bg-transparent'
+        }`}
+        style={{
+          transform: isPillMode ? 'scale(1)' : `scale(${headerScale})`,
+          opacity: headerOpacity,
+        }}
+      >
         {/* Logo Section */}
-        <div className="flex items-center space-x-2">
+        <div className={`flex items-center transition-all duration-300 ${
+          isPillMode ? 'space-x-1' : 'space-x-2'
+        }`}>
           <img
             src="/assets/logo.png"
             alt="Scopy AI Logo"
-            className="h-8 w-8 object-contain brightness-0 invert"
+            className={`object-contain brightness-0 invert transition-all duration-300 ${
+              isPillMode ? 'h-6 w-6' : 'h-8 w-8'
+            }`}
           />
-          <span className="text-xl font-semibold">Scopy AI</span>
+          <span className={`font-semibold transition-all duration-300 ${
+            isPillMode ? 'text-lg' : 'text-xl'
+          }`}>
+            Scopy AI
+          </span>
         </div>
 
         {/* Navigation Menu */}
-        <nav className="hidden items-center space-x-8 md:flex">
+        <nav className={`hidden items-center md:flex transition-all duration-300 ${
+          isPillMode ? 'space-x-4' : 'space-x-8'
+        }`}>
           {['home', 'features', 'howitworks', 'testimonials', 'resources'].map((item) => (
             <a
               key={item}
@@ -56,7 +92,9 @@ const Header: React.FC = () => {
               onMouseEnter={() => setHoveredItem(item)}
               onMouseLeave={() => setHoveredItem(null)}
             >
-              <span className="capitalize hover:text-gray-300 transition-colors duration-300">
+              <span className={`capitalize hover:text-gray-300 transition-colors duration-300 ${
+                isPillMode ? 'text-sm' : 'text-base'
+              }`}>
                 {item === 'howitworks' ? 'How It Works' : item.charAt(0).toUpperCase() + item.slice(1)}
               </span>
               {/* Animated underline */}
@@ -72,10 +110,16 @@ const Header: React.FC = () => {
         {/* Get Started Button */}
         <div className="flex items-center relative">
           <div className="relative group">
-            <div className="h-12 bg-white rounded-full flex items-center justify-center px-6 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105">
-              <div className="flex items-center space-x-2">
+            <div className={`bg-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 ${
+              isPillMode ? 'h-10 px-4' : 'h-12 px-6'
+            }`}>
+              <div className={`flex items-center transition-all duration-300 ${
+                isPillMode ? 'space-x-1' : 'space-x-2'
+              }`}>
                 <svg 
-                  className="w-4 h-4 text-black" 
+                  className={`text-black transition-all duration-300 ${
+                    isPillMode ? 'w-3 h-3' : 'w-4 h-4'
+                  }`}
                   fill="none" 
                   stroke="currentColor" 
                   viewBox="0 0 24 24"
@@ -87,7 +131,9 @@ const Header: React.FC = () => {
                     d="M4 20L20 4M13 4h7v7" 
                   />
                 </svg>
-                <span className="text-black text-lg font-medium whitespace-nowrap">
+                <span className={`text-black font-medium whitespace-nowrap transition-all duration-300 ${
+                  isPillMode ? 'text-sm' : 'text-lg'
+                }`}>
                   Get Started
                 </span>
               </div>
