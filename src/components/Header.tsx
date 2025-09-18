@@ -132,7 +132,10 @@ const Header: React.FC = () => {
                     d="M4 20L20 4M13 4h7v7" 
                   />
                 </svg>
-                <span className="text-black font-medium whitespace-nowrap text-lg">
+                <span className="text-black font-medium whitespace-nowrap transition-all duration-500 ease-out"
+                  style={{
+                    fontSize: isPillMode ? '14px' : '16px'
+                  }}>
                   Get Started
                 </span>
               </div>
