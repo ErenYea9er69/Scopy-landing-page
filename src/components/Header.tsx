@@ -37,7 +37,7 @@ const Header: React.FC = () => {
       <div 
         className={`mx-auto flex items-center justify-between text-white transition-all duration-500 ease-out ${
           isPillMode 
-            ? 'max-w-fit bg-gray-900 bg-opacity-90 backdrop-blur-md border border-gray-700 rounded-full shadow-2xl' 
+            ? 'max-w-fit bg-transparent backdrop-blur-md border border-gray-700 border-opacity-50 rounded-full shadow-2xl' 
             : isScrolled 
               ? 'container bg-gray-900 bg-opacity-80 backdrop-blur-md border-b border-gray-700' 
               : 'container bg-transparent'
