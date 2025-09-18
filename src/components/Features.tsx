@@ -1,178 +1,260 @@
-// src/components/Features.tsx
-
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-
-// Define the structure for a single feature's data
-interface Feature {
-  id: string;
-  icon: string;
-  tabName: string;
-  title: string;
-  description: string;
-  keyPoints: string[];
-  videoSrc: string;
-}
-
-// Array containing the data for all features for clean code and scalability
-const featuresData: Feature[] = [
-  {
-    id: 'offer',
-    icon: '🎁',
-    tabName: 'Create Offers',
-    title: 'The Offer Architect',
-    description: 'Your specialist for creating irresistible products and services. This AI helps you construct offers so compelling, people feel they can\'t say no.',
-    keyPoints: [
-      'The Value Equation: Maximize dream outcomes while minimizing effort.',
-      'Grand Slam Offer: A step-by-step process to build your core offer.',
-      'Enhancement Tools: Use guarantees, pricing psychology, and scarcity.',
-      'Offer Naming: Generate clear and desirable names for your products.',
-    ],
-    videoSrc: '/assets/bg0.mp4',
-  },
-  {
-    id: 'leads',
-    icon: '📣',
-    tabName: 'Find Buyers',
-    title: 'The Lead Generation Specialist',
-    description: 'Your expert on finding customers. This AI provides actionable strategies to generate and capture leads who show real intent to buy.',
-    keyPoints: [
-      'The Four Core Channels: Master warm/cold outreach, content, and paid ads.',
-      'Lead Magnet Creation: Build valuable free resources to capture contacts.',
-      'Actionable Deliverables: Get outreach scripts, email templates, and roadmaps.',
-      'System Audits: Receive a complete analysis of your current lead generation.',
-    ],
-    videoSrc: '/assets/bg0.mp4',
-  },
-  {
-    id: 'money',
-    icon: '💰',
-    tabName: 'Maximize Revenue',
-    title: 'The Money Model Architect',
-    description: 'Your revenue system designer. This AI builds a complete model to maximize customer acquisition and lifetime value, making your growth self-funding.',
-    keyPoints: [
-      'The Four Offer Types: Design attraction, upsell, downsell, and continuity offers.',
-      'Economic Modeling: Calculate and track CAC and CLV for profitability.',
-      'Customer Journey Map: Visualize how customers move through your sales system.',
-      'Scaling Roadmap: Get a clear plan to grow once your model is proven.',
-    ],
-    videoSrc: '/assets/bg0.mp4',
-  },
-];
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const Features: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>(featuresData[0].id);
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const activeFeature = featuresData.find((feature) => feature.id === activeTab);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const element = document.getElementById('features');
+    if (element) {
+      observer.observe(element);
+    }
+
+    return () => {
+      if (element) {
+        observer.unobserve(element);
+      }
+    };
+  }, []);
+
+  const features = [
+    {
+      icon: "🎁",
+      title: "The Offer Architect",
+      subtitle: "Create Irresistible Offers",
+      problem: "What should I sell?",
+      description: "Transform your ideas into compelling offers that customers can't refuse using proven value frameworks.",
+      frameworks: [
+        "Value Equation Formula",
+        "Grand Slam Offer Construction", 
+        "Risk-Free Guarantees",
+        "Pricing Psychology"
+      ],
+      deliverables: [
+        "Complete offer blueprint",
+        "Pricing recommendations",
+        "Guarantee structures",
+        "Bonus & scarcity strategies"
+      ],
+      gradient: "from-purple-500/20 to-pink-500/20",
+      borderGradient: "from-purple-500 to-pink-500",
+      hoverGradient: "from-purple-500/30 to-pink-500/30"
+    },
+    {
+      icon: "📣",
+      title: "Lead Generation Specialist", 
+      subtitle: "Find Your Ideal Customers",
+      problem: "How do I find these people?",
+      description: "Generate qualified leads through four proven channels that convert prospects into paying customers.",
+      frameworks: [
+        "Four Core Channels System",
+        "Lead Magnet Creation",
+        "Warm & Cold Outreach",
+        "Content Marketing Strategy"
+      ],
+      deliverables: [
+        "90-day implementation roadmap",
+        "Channel-specific action plans",
+        "Outreach scripts & templates",
+        "Lead generation audit"
+      ],
+      gradient: "from-blue-500/20 to-cyan-500/20",
+      borderGradient: "from-blue-500 to-cyan-500",
+      hoverGradient: "from-blue-500/30 to-cyan-500/30"
+    },
+    {
+      icon: "💰",
+      title: "Money Model Architect",
+      subtitle: "Maximize Revenue Systems", 
+      problem: "How do I get them to buy?",
+      description: "Build a complete revenue model where customer profit exceeds acquisition costs, making growth self-funding.",
+      frameworks: [
+        "Four Offer Types System",
+        "Economic Modeling (CAC/CLV)",
+        "Customer Journey Mapping",
+        "Scaling Strategy Blueprint"
+      ],
+      deliverables: [
+        "Complete money model blueprint",
+        "Customer journey map",
+        "Pricing optimization",
+        "Scaling roadmap"
+      ],
+      gradient: "from-green-500/20 to-emerald-500/20", 
+      borderGradient: "from-green-500 to-emerald-500",
+      hoverGradient: "from-green-500/30 to-emerald-500/30"
+    }
+  ];
 
   return (
-    <section id="features" className="py-20 sm:py-32">
-      <div className="container mx-auto px-6 lg:px-12">
+    <section id="features" className="py-24 px-6 lg:px-12">
+      <div className="container mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto">
-          <h2 className="text-3xl lg:text-5xl font-bold text-white mb-4">
-            Your AI-Powered Business System
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+            Three Critical Business Problems.
+            <br />
+            <span className="bg-gradient-to-r from-white via-gray-300 to-white bg-clip-text text-transparent">
+              One AI Solutions.
+            </span>
           </h2>
-          <p className="text-lg lg:text-xl text-gray-300">
-            Scopy AI provides a structured approach to solve the three most fundamental business challenges, turning complexity into a clear, actionable plan.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+            Every successful business must solve these fundamental challenges. Scopy provide clear, 
+            actionable frameworks to build your profitable growth system.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Tab Navigator */}
-        <div className="flex justify-center border-b border-gray-700 mt-12">
-          {featuresData.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`relative px-4 py-3 sm:px-6 lg:px-8 text-sm sm:text-base font-medium transition-colors duration-300 focus:outline-none ${
-                activeTab === tab.id
-                  ? 'text-white'
-                  : 'text-gray-400 hover:text-white'
-              }`}
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              animate={isVisible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="relative group"
+              onMouseEnter={() => setActiveCard(index)}
+              onMouseLeave={() => setActiveCard(null)}
             >
-              <span className="mr-2">{tab.icon}</span>
-              {tab.tabName}
-              {activeTab === tab.id && (
-                <motion.div
-                  className="absolute bottom-[-1px] left-0 right-0 h-0.5 bg-white"
-                  layoutId="underline"
-                  transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                />
-              )}
-            </button>
+              {/* Card Container */}
+              <div 
+                className={`
+                  relative p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm
+                  transition-all duration-500 ease-out cursor-pointer
+                  bg-gradient-to-br ${feature.gradient}
+                  ${activeCard === index ? `bg-gradient-to-br ${feature.hoverGradient} scale-105` : 'hover:scale-102'}
+                `}
+                style={{
+                  background: activeCard === index 
+                    ? `linear-gradient(135deg, ${feature.hoverGradient.replace('from-', '').replace('to-', '').replace('/30', '').split(' ').join(', ')})` 
+                    : undefined
+                }}
+              >
+                {/* Animated Border */}
+                <div 
+                  className={`
+                    absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500
+                    bg-gradient-to-r ${feature.borderGradient} p-[1px]
+                    ${activeCard === index ? 'opacity-100' : 'group-hover:opacity-50'}
+                  `}
+                >
+                  <div className="w-full h-full rounded-2xl bg-gray-900"></div>
+                </div>
+
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon & Header */}
+                  <div className="mb-6">
+                    <div className="text-4xl mb-4">{feature.icon}</div>
+                    <h3 className="text-2xl font-bold text-white mb-2">{feature.title}</h3>
+                    <p className="text-lg text-gray-300 mb-3">{feature.subtitle}</p>
+                    <div className="text-sm font-medium text-gray-400 bg-gray-800/50 px-3 py-1 rounded-full inline-block">
+                      {feature.problem}
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    {feature.description}
+                  </p>
+
+                  {/* Frameworks */}
+                  <div className="mb-6">
+                    <h4 className="text-white font-semibold mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-white rounded-full mr-2"></span>
+                      Key Frameworks
+                    </h4>
+                    <div className="space-y-2">
+                      {feature.frameworks.map((framework, idx) => (
+                        <div key={idx} className="text-sm text-gray-400 flex items-center">
+                          <svg className="w-4 h-4 mr-2 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                          {framework}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Expandable Deliverables */}
+                  <motion.div
+                    initial={false}
+                    animate={{ height: activeCard === index ? 'auto' : 0, opacity: activeCard === index ? 1 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="border-t border-gray-700/50 pt-4">
+                      <h4 className="text-white font-semibold mb-3 flex items-center">
+                        <span className="w-2 h-2 bg-gradient-to-r ${feature.borderGradient} rounded-full mr-2"></span>
+                        What You Get
+                      </h4>
+                      <div className="grid grid-cols-1 gap-2">
+                        {feature.deliverables.map((deliverable, idx) => (
+                          <div key={idx} className="text-sm text-gray-300 flex items-center bg-gray-800/30 px-3 py-2 rounded-lg">
+                            <svg className="w-4 h-4 mr-2 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            {deliverable}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* CTA */}
+                  <div className="mt-6">
+                    <button className={`
+                      w-full py-3 rounded-xl font-semibold text-white
+                      bg-gradient-to-r ${feature.borderGradient} 
+                      hover:shadow-lg hover:shadow-${feature.borderGradient.split(' ')[0].replace('from-', '').replace('-500', '')}-500/25
+                      transition-all duration-300 transform hover:scale-105
+                      ${activeCard === index ? 'animate-pulse' : ''}
+                    `}>
+                      Explore {feature.title}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Hover Effect Background */}
+                <div className={`
+                  absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-500
+                  bg-gradient-to-br ${feature.gradient}
+                  ${activeCard === index ? 'opacity-20' : 'group-hover:opacity-10'}
+                `}></div>
+              </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* Content Display Area */}
-        <div className="mt-16">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeFeature ? activeFeature.id : 'empty'}
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -20, opacity: 0 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-            >
-              {activeFeature && (
-                <>
-                  {/* Left Side: Textual Content */}
-                  <div className="text-white">
-                    <h3 className="text-2xl lg:text-4xl font-bold mb-4">
-                      {activeFeature.title}
-                    </h3>
-                    <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-                      {activeFeature.description}
-                    </p>
-                    <ul className="space-y-4">
-                      {activeFeature.keyPoints.map((point, index) => (
-                        <li key={index} className="flex items-start">
-                          <svg
-                            className="w-6 h-6 text-blue-400 mr-3 mt-1 flex-shrink-0"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                            ></path>
-                          </svg>
-                          <span className="text-gray-200">{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Right Side: Visual Content */}
-                  <div className="flex justify-center items-center">
-                    <div className="w-full max-w-md">
-                      <video
-                        className="w-full h-auto rounded-lg shadow-2xl"
-                        style={{
-                          mixBlendMode: 'screen',
-                          filter: 'contrast(1.2) brightness(1.1)',
-                          boxShadow: '0 0 40px 10px rgba(79, 70, 229, 0.4)', // A blue glow to match the orb
-                        }}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
-                        src={activeFeature.videoSrc}
-                        key={activeFeature.videoSrc} // Important for React to re-render the video element on change
-                      >
-                        Your browser does not support the video tag.
-                      </video>
-                    </div>
-                  </div>
-                </>
-              )}
-            </motion.div>
-          </AnimatePresence>
-        </div>
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isVisible ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 1 }}
+          className="text-center mt-16"
+        >
+          <p className="text-gray-400 mb-6 text-lg">
+            Ready to solve all three business challenges?
+          </p>
+          <button className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl">
+            Start Building Your Growth System
+          </button>
+        </motion.div>
       </div>
     </section>
   );
