@@ -14,7 +14,7 @@ const Features: React.FC = () => {
       isMain: true
     },
     {
-      title: "The Offer Architect 🎁",
+      title: "The Offer Architect 🎯",
       description: "Create irresistible Grand Slam Offers using the Value Equation. Get AI-generated names, deliverables, guarantees, bonuses, and value-based pricing strategies.",
       icon: (
         <svg className="w-12 h-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -115,8 +115,20 @@ const Features: React.FC = () => {
               >
                 {/* Animated gradient border */}
                 <div className="absolute inset-0 rounded-3xl p-[1px]">
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500 via-blue-500 via-violet-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-sm animate-border-pulse"></div>
-                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-cyan-500 via-blue-500 via-violet-500 to-purple-500 opacity-0 group-hover:opacity-20 transition-opacity duration-700 blur-[2px]"></div>
+                  <div className={`
+                    absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 
+                    transition-opacity duration-700 blur-sm animate-border-pulse
+                    ${feature.isMain 
+                      ? 'bg-gradient-to-r from-emerald-500 via-teal-500 via-cyan-500 to-emerald-500' 
+                      : 'bg-gradient-to-r from-cyan-500 via-teal-500 via-emerald-500 to-cyan-500'}
+                  `}></div>
+                  <div className={`
+                    absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-20 
+                    transition-opacity duration-700 blur-[2px]
+                    ${feature.isMain 
+                      ? 'bg-gradient-to-r from-emerald-500 via-teal-500 via-cyan-500 to-emerald-500' 
+                      : 'bg-gradient-to-r from-cyan-500 via-teal-500 via-emerald-500 to-cyan-500'}
+                  `}></div>
                 </div>
                 
                 {/* Inner content */}
@@ -125,8 +137,8 @@ const Features: React.FC = () => {
                     <div className={`
                       inline-flex items-center justify-center p-3 rounded-2xl
                       ${feature.isMain 
-                        ? 'bg-gradient-to-br from-cyan-500 to-blue-500' 
-                        : 'bg-gradient-to-br from-violet-500 to-purple-500'}
+                        ? 'bg-gradient-to-br from-emerald-500 to-teal-500' 
+                        : 'bg-gradient-to-br from-cyan-500 to-teal-600'}
                       text-white shadow-lg
                       ${feature.isMain ? 'group-hover:animate-pulse-slow' : ''}
                     `}>
@@ -137,8 +149,8 @@ const Features: React.FC = () => {
                   <h3 className={`
                     text-xl font-bold mb-4
                     ${feature.isMain 
-                      ? 'bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-500' 
-                      : 'bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-500'}
+                      ? 'bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-teal-500' 
+                      : 'bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-teal-600'}
                   `}>
                     {feature.title}
                   </h3>
@@ -149,7 +161,7 @@ const Features: React.FC = () => {
                 </div>
                 
                 {/* Focus ring for accessibility */}
-                <div className="absolute inset-0 rounded-3xl ring-2 ring-cyan-500 ring-opacity-0 group-focus-within:ring-opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+                <div className="absolute inset-0 rounded-3xl ring-2 ring-emerald-500 ring-opacity-0 group-focus-within:ring-opacity-100 transition-opacity duration-300 pointer-events-none"></div>
               </div>
             </motion.div>
           ))}
