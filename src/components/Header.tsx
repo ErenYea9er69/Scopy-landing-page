@@ -9,16 +9,12 @@ const Header: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight; // Approximate hero height
-      const triggerPoint = heroHeight * 0.4; // 40% of hero section
+      const heroHeight = window.innerHeight;
+      const triggerPoint = heroHeight * 0.4;
       
       setIsScrolled(scrollY > 10);
-      
-      // Calculate scroll progress (0 to 1) up to the trigger point
       const progress = Math.min(scrollY / triggerPoint, 1);
       setScrollProgress(progress);
-      
-      // Switch to pill mode when we reach 40% of hero
       setIsPillMode(scrollY > triggerPoint);
     };
     
@@ -37,9 +33,8 @@ const Header: React.FC = () => {
     }
   };
 
-  // Calculate dynamic styles based on scroll progress
-  const headerScale = 1 - (scrollProgress * 0.3); // Scale from 1 to 0.7
-  const headerOpacity = 0.8 + (scrollProgress * 0.2); // Opacity from 0.8 to 1
+  const headerScale = 1 - (scrollProgress * 0.3);
+  const headerOpacity = 0.8 + (scrollProgress * 0.2);
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out ${
@@ -58,7 +53,6 @@ const Header: React.FC = () => {
           opacity: headerOpacity,
         }}
       >
-        {/* Logo Section */}
         <div className={`flex items-center transition-all duration-300 ${
           isPillMode ? 'space-x-1' : 'space-x-2'
         }`}>
@@ -76,11 +70,10 @@ const Header: React.FC = () => {
           </span>
         </div>
 
-        {/* Navigation Menu */}
         <nav className={`hidden items-center md:flex transition-all duration-300 ${
           isPillMode ? 'space-x-4' : 'space-x-8'
         }`}>
-          {['home', 'features', 'howitworks', 'testimonials', 'resources'].map((item) => (
+          {['home', 'features', 'testimonials'].map((item) => (
             <a
               key={item}
               href={`#${item}`}
@@ -95,9 +88,8 @@ const Header: React.FC = () => {
               <span className={`capitalize hover:text-gray-300 transition-colors duration-300 ${
                 isPillMode ? 'text-sm' : 'text-base'
               }`}>
-                {item === 'howitworks' ? 'How It Works' : item.charAt(0).toUpperCase() + item.slice(1)}
+                {item.charAt(0).toUpperCase() + item.slice(1)}
               </span>
-              {/* Animated underline */}
               <div 
                 className={`absolute bottom-0 left-0 h-0.5 bg-white transition-all duration-300 ease-out ${
                   hoveredItem === item ? 'w-full opacity-100' : 'w-0 opacity-0'
@@ -107,7 +99,6 @@ const Header: React.FC = () => {
           ))}
         </nav>
 
-        {/* Get Started Button */}
         <div className="flex items-center relative">
           <div className="relative group">
             <div className={`bg-white rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 ${

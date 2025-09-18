@@ -2,7 +2,6 @@ import Header from './components/Header';
 import Background from './components/Background';
 import Hero from './components/Hero';
 import Features from './components/Features';
-import HowItWorks from './components/HowItWorks';
 import Testimonials from './components/Testimonials';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
@@ -10,7 +9,7 @@ import Footer from './components/Footer';
 const App = () => {
   return (
     <div className="relative min-h-screen font-sans">
-      <style >{`
+      <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
         body {
           font-family: 'Inter', sans-serif;
@@ -34,7 +33,6 @@ const App = () => {
       <main>
         <Hero />
         <Features />
-        <HowItWorks />
         <Testimonials />
         <CTA />
       </main>
