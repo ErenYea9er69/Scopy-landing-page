@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Hero: React.FC = () => {
-  const words = ["Build", "Profitable", "Business", "Systems", "with", "AI"];
+  const words = ["Build", "Profitable", "Business", "Systems", "with", "AI"]; //Scopy Your AI Growth Team 
   
   return (
     <section id="home" className="flex min-h-screen items-center">
