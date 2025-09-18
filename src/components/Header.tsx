@@ -73,7 +73,7 @@ const Header: React.FC = () => {
         <nav className={`hidden items-center md:flex transition-all duration-300 ${
           isPillMode ? 'space-x-4' : 'space-x-8'
         }`}>
-          {['home', 'features', 'testimonials'].map((item) => (
+          {['home', 'features', 'testimonials', 'pricing'].map((item) => (
             <a
               key={item}
               href={`#${item}`}
