@@ -1,126 +1,168 @@
 // features.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
 const Features: React.FC = () => {
+  const [expandedCard, setExpandedCard] = useState<number | null>(null);
+
+  const toggleCard = (index: number) => {
+    setExpandedCard(expandedCard === index ? null : index);
+  };
+
   const features = [
     {
-      title: "Offer Architect",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 7h.01M17 7h.01M7 12h.01M17 12h.01M7 17h.01M17 17h.01M7 22h.01M17 22h.01" />
-        </svg>
-      ),
-      description: "Design irresistible offers that make customers feel they can't say no.",
-      framework: "Value Equation: (Dream Outcome × Likelihood) ÷ (Time Delay × Effort)",
-      tools: [
-        "Grand Slam Offer Builder",
-        "Pricing Psychology",
-        "Guarantee Generator",
-        "Bonus & Urgency Planner",
-        "Offer Naming Formula"
-      ],
-      cta: "Build My Offer"
+      id: 1,
+      title: "The Offer Architect",
+      emoji: "🎁",
+      description: "Create compelling products and services that customers can't refuse",
+      color: "from-blue-500 to-indigo-600",
+      features: [
+        "Value Equation: Maximize perceived value with our proprietary formula",
+        "Grand Slam Offer Construction: Step-by-step offer building process",
+        "Guarantees, Pricing Psychology & Scarcity: Advanced offer enhancement tools",
+        "Offer Naming: Clear, desirable naming strategies"
+      ]
     },
     {
-      title: "Lead Generation Specialist",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.336 2.146" />
-        </svg>
-      ),
-      description: "Find high-intent customers who are ready to buy — not just see your content.",
-      framework: "Four Core Channels: Warm Outreach, Free Content, Cold Outreach, Paid Ads",
-      tools: [
-        "Lead Magnet Creator",
-        "Channel Audit Tool",
-        "Outreach Scripts",
-        "Email Templates",
-        "90-Day Roadmap"
-      ],
-      cta: "Generate Leads"
+      id: 2,
+      title: "The Lead Generation Specialist",
+      emoji: "📣",
+      description: "Find and capture high-intent prospects who are ready to buy",
+      color: "from-purple-500 to-pink-600",
+      features: [
+        "Four Core Channels: Warm outreach, content marketing, cold outreach, paid ads",
+        "Lead Magnet Creation: High-converting free resources",
+        "Actionable Deliverables: Outreach scripts, email templates, 90-day roadmap",
+        "Intent-Based Lead Definition: Focus on prospects who take action"
+      ]
     },
     {
-      title: "Money Model Architect",
-      icon: (
-        <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
-        </svg>
-      ),
-      description: "Create a self-funding revenue system where profit exceeds acquisition cost.",
-      framework: "Four Offer Types: Attraction, Upsell, Downsell, Continuity",
-      tools: [
-        "Customer Lifetime Value Calculator",
-        "CAC vs CLV Analyzer",
-        "Revenue Funnel Map",
-        "Pricing Strategy Engine",
-        "Scaling Blueprint"
-      ],
-      cta: "Optimize Revenue"
+      id: 3,
+      title: "The Money Model Architect",
+      emoji: "💰",
+      description: "Build a revenue system that funds its own growth",
+      color: "from-green-500 to-teal-600",
+      features: [
+        "Four Offer Types: Attraction, Upsell, Downsell, and Continuity offers",
+        "Economic Modeling: CAC/CLV calculations for profitability",
+        "Customer Journey Mapping: Complete purchase pathway blueprint",
+        "Scaling Roadmap: Proven strategies for business expansion"
+      ]
     }
   ];
 
   return (
-    <section id="features" className="py-24 bg-gradient-to-br from-gray-900 via-blue-900 to-indigo-900">
-      <div className="container mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <motion.div 
+    <section id="features" className="py-20 bg-gray-900">
+      <div className="container mx-auto px-6">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Powerful AI Agents That Solve the Core Problems of Business
+            Your AI Growth Team
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Scopy AI doesn’t just give advice — it builds systems. Three expert AI assistants work together to help you build, attract, and convert.
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            Three specialized AI assistants to solve your business's fundamental challenges
           </p>
         </motion.div>
 
-        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 40 }}
+              key={feature.id}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white bg-opacity-5 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-10 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 cursor-pointer group"
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="bg-gray-800 rounded-2xl overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-500"
             >
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
-                  {feature.icon}
+              <div className={`bg-gradient-to-r ${feature.color} p-6`}>
+                <div className="flex items-center mb-4">
+                  <span className="text-3xl mr-3">{feature.emoji}</span>
+                  <h3 className="text-2xl font-bold text-white">{feature.title}</h3>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">{feature.title}</h3>
-                <p className="text-gray-300 mb-6 leading-relaxed">{feature.description}</p>
-                
-                {/* Framework Highlight */}
-                <div className="bg-black bg-opacity-30 rounded-lg p-3 mb-6 w-full">
-                  <p className="text-xs text-blue-300 font-mono tracking-wide">{feature.framework}</p>
-                </div>
-
-                {/* Tools List */}
+                <p className="text-gray-100">{feature.description}</p>
+              </div>
+              
+              <div className="p-6">
                 <ul className="space-y-3 mb-6">
-                  {feature.tools.map((tool, i) => (
-                    <li key={i} className="flex items-center text-gray-200 text-sm">
-                      <svg className="w-4 h-4 mr-2 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  {feature.features.map((item, idx) => (
+                    <li key={idx} className="flex items-start">
+                      <svg 
+                        className="w-5 h-5 text-green-400 mt-0.5 mr-2 flex-shrink-0" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth="2" 
+                          d="M5 13l4 4L19 7" 
+                        />
                       </svg>
-                      {tool}
+                      <span className="text-gray-300">{item}</span>
                     </li>
                   ))}
                 </ul>
-
-                {/* CTA Button */}
-                <button className="w-full py-3 px-6 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-full hover:from-blue-600 hover:to-cyan-600 transform hover:scale-105 transition-all duration-300 shadow-md">
-                  {feature.cta}
+                
+                <button
+                  onClick={() => toggleCard(index)}
+                  className="text-white font-medium flex items-center group"
+                >
+                  {expandedCard === index ? 'Show less' : 'Learn more'}
+                  <svg 
+                    className={`w-4 h-4 ml-1 transition-transform duration-300 ${expandedCard === index ? 'rotate-180' : ''}`} 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth="2" 
+                      d="M19 9l-7 7-7-7" 
+                    />
+                  </svg>
                 </button>
+                
+                {expandedCard === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    className="mt-4 pt-4 border-t border-gray-700"
+                  >
+                    <p className="text-gray-400 text-sm">
+                      This AI assistant provides actionable frameworks and step-by-step guidance 
+                      to help you build offers that convert. With our proven methodologies, 
+                      you'll create products and services that customers actively seek out.
+                    </p>
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           ))}
         </div>
+        
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-16 text-center"
+        >
+          <p className="text-gray-400 max-w-2xl mx-auto mb-8">
+            Each assistant works independently or together to create a complete business growth system. 
+            Start with one and expand as your needs grow.
+          </p>
+          <button className="bg-white text-gray-900 font-semibold py-3 px-8 rounded-full hover:bg-gray-200 transition-colors duration-300">
+            Explore All Features
+          </button>
+        </motion.div>
       </div>
     </section>
   );
