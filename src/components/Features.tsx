@@ -240,21 +240,6 @@ const Features: React.FC = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="text-center mt-16"
-        >
-          <p className="text-gray-400 mb-6 text-lg">
-            Ready to solve all three business challenges?
-          </p>
-          <button className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl">
-            Start Building Your Growth System
-          </button>
-        </motion.div>
       </div>
     </section>
   );
