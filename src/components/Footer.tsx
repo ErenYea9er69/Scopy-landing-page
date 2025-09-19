@@ -9,64 +9,47 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-gray-900 border-t border-gray-800 py-12 px-6">
-      <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div>
-            <div className="flex items-center space-x-2 mb-6">
-              <img
-                src="/assets/logo.png"
-                alt="Scopy AI Logo"
-                className="h-8 w-8 object-contain brightness-0 invert"
-              />
-              <span className="text-xl font-semibold text-white">Scopy AI</span>
-            </div>
-            <p className="text-gray-400 mb-6">
-              The ultimate business coaching tool for entrepreneurs building profitable businesses.
-            </p>
-            <div className="flex space-x-4">
-              {['twitter', 'linkedin', 'facebook'].map((social) => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="text-gray-400 hover:text-white transition-colors duration-300"
-                >
-                  <div className="w-6 h-6 bg-gray-700 rounded-full hover:bg-blue-500 transition-colors duration-300"></div>
-                </a>
-              ))}
-            </div>
-          </div>
-          
+    <footer className="bg-black py-16 px-6">
+      <div className="container mx-auto max-w-6xl">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
           {[
             {
-              title: "Product",
-              links: ["Features", "Solutions", "Pricing", "Templates"]
+              title: "COMPANY",
+              links: ["About", "Careers", "Press"]
             },
             {
-              title: "Resources",
-              links: ["Blog", "Guides", "Webinars", "Community"]
+              title: "TECHNOLOGY",
+              links: ["Platform", "Process", "Case Studies", "Research"]
             },
             {
-              title: "Company",
-              links: ["About", "Careers", "Contact", "Partners"]
+              title: "RESOURCES",
+              links: ["Blog", "Whitepapers", "Events"]
+            },
+            {
+              title: "LEGAL",
+              links: ["Privacy Policy", "Terms of Service", "Field Reports"]
+            },
+            {
+              title: "CONNECT",
+              links: ["LinkedIn", "X (Twitter)", "Data Security"]
             }
           ].map((column, index) => (
             <div key={index}>
-              <h3 className="text-white font-semibold mb-6">{column.title}</h3>
-              <ul className="space-y-4">
+              <h3 className="text-gray-400 font-medium mb-8 text-xs tracking-wider uppercase">{column.title}</h3>
+              <ul className="space-y-5">
                 {column.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
                     <a 
                       href="#" 
                       onClick={(e) => {
                         e.preventDefault();
-                        if (link.toLowerCase() === 'features') {
+                        if (link.toLowerCase() === 'platform') {
                           scrollToSection('features');
-                        } else if (link.toLowerCase() === 'solutions') {
+                        } else if (link.toLowerCase() === 'process') {
                           scrollToSection('howitworks');
                         }
                       }}
-                      className="text-gray-400 hover:text-white transition-colors duration-300 cursor-pointer"
+                      className="text-gray-300 hover:text-white transition-colors duration-200 cursor-pointer text-sm leading-relaxed"
                     >
                       {link}
                     </a>
@@ -76,10 +59,7 @@ const Footer: React.FC = () => {
             </div>
           ))}
         </div>
-        
-        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500">
-          <p>© 2023 Scopy AI. All rights reserved.</p>
-        </div>
+
       </div>
     </footer>
   );
