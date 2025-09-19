@@ -127,7 +127,9 @@ const Features: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            Powered by Three AI Assistants
+            Three Critical Business Problems.
+            <br />
+            One AI Solutions.
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-300 max-w-3xl mx-auto"
