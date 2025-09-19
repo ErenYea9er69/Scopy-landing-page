@@ -10,8 +10,8 @@ const Features: React.FC = () => {
   const features = [
     {
       id: 'offer-architect',
-      title: 'Offer Architect 🎁',
-      description: 'Solve the question: "What should I sell?" by building offers so compelling people can’t say no.',
+      title: 'Offer Architect',
+      description: 'Solve the question: "What should I sell?" by building offers so compelling people cant say no.',
       coreFunction: 'Design, evaluate, and improve your offers using a specific formula for value.',
       icon: (
         <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -37,7 +37,7 @@ const Features: React.FC = () => {
     },
     {
       id: 'lead-generation',
-      title: 'Lead Generation Specialist 📣',
+      title: 'Lead Generation Specialist',
       description: 'Answer: "How do I find buyers?" with strategies that capture real intent, not just attention.',
       coreFunction: 'Generate and capture leads from prospects who show real intent to buy.',
       icon: (
@@ -64,7 +64,7 @@ const Features: React.FC = () => {
     },
     {
       id: 'money-model',
-      title: 'Money Model Architect 💰',
+      title: 'Money Model Architect',
       description: 'Answer: "How do I get them to buy?" by designing a complete model that maximizes customers and revenue.',
       coreFunction: 'Design a system where profit from one customer exceeds the cost of acquiring several new ones.',
       icon: (
@@ -113,12 +113,17 @@ const Features: React.FC = () => {
   };
 
   return (
-    <section id="features" className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+    <section 
+      id="features" 
+      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden min-h-screen"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-6 relative z-10 h-full">
         <div className="text-center mb-16">
           <motion.h2 
             className="text-4xl md:text-5xl font-bold text-white mb-4"
@@ -129,7 +134,7 @@ const Features: React.FC = () => {
           >
             Three Critical Business Problems.
             <br />
-            One AI Solutions.
+            One AI Solution.
           </motion.h2>
           <motion.p 
             className="text-xl text-gray-300 max-w-3xl mx-auto"
@@ -142,88 +147,100 @@ const Features: React.FC = () => {
           </motion.p>
         </div>
 
-        <div 
-          className="max-w-4xl mx-auto bg-gray-800/30 backdrop-blur-lg rounded-2xl border border-gray-700 p-8 shadow-2xl"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          <div className="flex justify-center mb-8">
-            {features.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToFeature(index)}
-                className={`mx-1 w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'bg-blue-500 w-8' 
-                    : 'bg-gray-600 hover:bg-gray-500'
-                }`}
-                aria-label={`Go to ${features[index].title}`}
-              />
-            ))}
-          </div>
+        {/* Navigation dots */}
+        <div className="flex justify-center mb-12">
+          {features.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToFeature(index)}
+              className={`mx-1 w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentIndex 
+                  ? 'bg-blue-500 w-8' 
+                  : 'bg-gray-600 hover:bg-gray-500'
+              }`}
+              aria-label={`Go to ${features[index].title}`}
+            />
+          ))}
+        </div>
 
-          <div className="relative h-[500px]">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="absolute inset-0"
-              >
-                <div className="flex flex-col md:flex-row items-center">
-                  <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
-                    <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-6 rounded-2xl shadow-lg">
-                      <div className="text-white">
-                        {features[currentIndex].icon}
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className="md:w-2/3 md:pl-8">
-                    <h3 className="text-2xl font-bold text-white mb-2 flex items-center">
-                      {features[currentIndex].title}
-                    </h3>
-                    <p className="text-gray-300 mb-4">
-                      {features[currentIndex].description}
-                    </p>
-                    <div className="bg-gray-900/50 rounded-lg p-4 mb-6">
-                      <h4 className="text-blue-400 font-semibold mb-2">Core Function</h4>
-                      <p className="text-gray-300">
-                        {features[currentIndex].coreFunction}
-                      </p>
-                    </div>
-                    
-                    <div className="space-y-4">
-                      <h4 className="text-xl font-semibold text-white">Key Frameworks</h4>
-                      {features[currentIndex].frameworks.map((framework, idx) => (
-                        <div key={idx} className="flex items-start">
-                          <div className="flex-shrink-0 mt-1 mr-3">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                          </div>
-                          <div>
-                            <h5 className="font-medium text-white">{framework.title}</h5>
-                            <p className="text-gray-400 text-sm">{framework.description}</p>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
+        {/* Full-width feature content */}
+        <div className="relative min-h-[600px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -30 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              className="absolute inset-0"
+            >
+              {/* Logo and title at top left */}
+              <div className="flex items-center mb-8">
+                <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-4 rounded-xl shadow-lg mr-6">
+                  <div className="text-white">
+                    {features[currentIndex].icon}
                   </div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
-          
-          <div className="mt-8 text-center">
-            <p className="text-gray-400 text-sm">
-              {isHovered 
-                ? "Hover to pause rotation" 
-                : `Auto-rotating in ${5 - Math.floor((Date.now() / 1000) % 5)}s...`}
-            </p>
-          </div>
+                <h3 className="text-3xl md:text-4xl font-bold text-white">
+                  {features[currentIndex].title}
+                </h3>
+              </div>
+
+              {/* Description */}
+              <div className="mb-8">
+                <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
+                  {features[currentIndex].description}
+                </p>
+                
+                <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-gray-700">
+                  <h4 className="text-blue-400 font-semibold text-lg mb-3">Core Function</h4>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    {features[currentIndex].coreFunction}
+                  </p>
+                </div>
+              </div>
+              
+              {/* Key Frameworks */}
+              <div>
+                <h4 className="text-2xl font-semibold text-white mb-6">Key Frameworks</h4>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {features[currentIndex].frameworks.map((framework, idx) => (
+                    <motion.div 
+                      key={idx} 
+                      className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-colors"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    >
+                      <div className="flex items-start mb-3">
+                        <div className="flex-shrink-0 mt-1 mr-3">
+                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                        </div>
+                        <h5 className="font-semibold text-white text-lg">
+                          {framework.title}
+                        </h5>
+                      </div>
+                      <p className="text-gray-400 leading-relaxed">
+                        {framework.description}
+                      </p>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
         
+        {/* Auto-rotation indicator */}
+        <div className="mt-12 text-center">
+          <p className="text-gray-400 text-sm">
+            {isHovered 
+              ? "Hover to pause rotation" 
+              : `Auto-rotating every 5 seconds...`}
+          </p>
+        </div>
+        
+        {/* Call to action */}
         <motion.div 
           className="mt-16 text-center"
           initial={{ opacity: 0, y: 20 }}
@@ -231,7 +248,7 @@ const Features: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <p className="text-gray-400 mb-6 max-w-2xl mx-auto">
+          <p className="text-gray-400 mb-6 max-w-2xl mx-auto text-lg">
             Stop guessing. Start building profitable systems with AI-guided clarity.
           </p>
           <button
