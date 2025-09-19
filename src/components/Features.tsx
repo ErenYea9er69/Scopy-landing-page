@@ -149,24 +149,21 @@ const Features: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Navigation dots with enhanced visibility */}
+        {/* Simple 3-dot navigation */}
         <div className="flex justify-center mb-12">
-          <div className="flex items-center bg-gray-800/50 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-700">
+          <div className="flex items-center space-x-2">
             {features.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToFeature(index)}
-                className={`mx-2 transition-all duration-300 ${
+                className={`transition-all duration-300 ${
                   index === currentIndex 
-                    ? 'w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50' 
-                    : 'w-3 h-3 bg-gray-500 rounded-full hover:bg-gray-400'
+                    ? 'w-6 h-2 bg-blue-500 rounded-full' 
+                    : 'w-2 h-2 bg-gray-500 rounded-full hover:bg-gray-400'
                 }`}
                 aria-label={`Go to ${features[index].title}`}
               />
             ))}
-            <div className="ml-4 text-gray-400 text-sm font-medium">
-              {currentIndex + 1} of {features.length}
-            </div>
           </div>
         </div>
 
