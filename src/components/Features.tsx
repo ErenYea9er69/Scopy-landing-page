@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Features: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const features = [
@@ -92,32 +91,35 @@ const Features: React.FC = () => {
     }
   ];
 
-  // Handle auto-rotation
+  // Handle continuous auto-rotation
   useEffect(() => {
-    if (!isHovered) {
-      intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev + 1) % features.length);
-      }, 5000);
-    }
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % features.length);
+    }, 5000);
     
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isHovered, features.length]);
+  }, [features.length]);
 
   // Handle manual navigation
   const goToFeature = (index: number) => {
     setCurrentIndex(index);
+    // Reset the interval when manually navigating
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+    intervalRef.current = setInterval(() => {
+      setCurrentIndex(prev => (prev + 1) % features.length);
+    }, 5000);
   };
 
   return (
     <section 
       id="features" 
       className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden min-h-screen"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
@@ -147,20 +149,25 @@ const Features: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Navigation dots */}
+        {/* Navigation dots with enhanced visibility */}
         <div className="flex justify-center mb-12">
-          {features.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToFeature(index)}
-              className={`mx-1 w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentIndex 
-                  ? 'bg-blue-500 w-8' 
-                  : 'bg-gray-600 hover:bg-gray-500'
-              }`}
-              aria-label={`Go to ${features[index].title}`}
-            />
-          ))}
+          <div className="flex items-center bg-gray-800/50 backdrop-blur-sm rounded-full px-6 py-3 border border-gray-700">
+            {features.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goToFeature(index)}
+                className={`mx-2 transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'w-4 h-4 bg-blue-500 rounded-full shadow-lg shadow-blue-500/50' 
+                    : 'w-3 h-3 bg-gray-500 rounded-full hover:bg-gray-400'
+                }`}
+                aria-label={`Go to ${features[index].title}`}
+              />
+            ))}
+            <div className="ml-4 text-gray-400 text-sm font-medium">
+              {currentIndex + 1} of {features.length}
+            </div>
+          </div>
         </div>
 
         {/* Full-width feature content */}
@@ -233,11 +240,12 @@ const Features: React.FC = () => {
         
         {/* Auto-rotation indicator */}
         <div className="mt-12 text-center">
-          <p className="text-gray-400 text-sm">
-            {isHovered 
-              ? "Hover to pause rotation" 
-              : `Auto-rotating every 5 seconds...`}
-          </p>
+          <div className="inline-flex items-center bg-gray-800/30 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-700/50">
+            <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+            <p className="text-gray-400 text-sm">
+              Auto-rotating every 5 seconds
+            </p>
+          </div>
         </div>
         
         {/* Call to action */}
