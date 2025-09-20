@@ -4,16 +4,17 @@ import { motion } from 'framer-motion';
 
 // Helper component for the icons to reduce repetition
 const IconWrapper: React.FC<{ children: React.ReactNode; colorClasses: string; }> = ({ children, colorClasses }) => (
-  <div className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 mb-4 shadow-lg ${colorClasses}`}>
+  <div className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 mb-4 shadow-lg ${colorClasses} flex-shrink-0 mx-auto`}>
     <div className="absolute inset-0 rounded-2xl opacity-20 blur-md bg-current"></div>
     {children}
   </div>
 );
 
-// Define the features for the grid
+// Define the features for the grid, now with descriptions
 const gridFeatures = [
   {
     title: 'Offer Architect',
+    description: 'Answers "What should I sell?" by helping you construct an irresistible product or service.',
     colorClasses: 'text-orange-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -23,6 +24,7 @@ const gridFeatures = [
   },
   {
     title: 'The Value Equation',
+    description: 'Maximizes your offer’s appeal by boosting the dream outcome while minimizing customer effort and delay.',
     colorClasses: 'text-green-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -32,6 +34,7 @@ const gridFeatures = [
   },
   {
     title: 'Grand Slam Offer',
+    description: 'A step-by-step process that bundles solutions to every customer problem into a single, high-value package.',
     colorClasses: 'text-blue-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -41,6 +44,7 @@ const gridFeatures = [
   },
   {
     title: 'Lead Generation',
+    description: 'Answers "How do I find customers?" by designing strategies to attract prospects who show real intent to buy.',
     colorClasses: 'text-purple-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -50,6 +54,7 @@ const gridFeatures = [
   },
   {
     title: 'Four Core Channels',
+    description: 'Builds actionable plans across four proven marketing channels: warm & cold outreach, content, and paid ads.',
     colorClasses: 'text-yellow-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -59,6 +64,7 @@ const gridFeatures = [
   },
   {
     title: 'AI Lead Magnets',
+    description: 'Creates valuable free content, like guides or checklists, to capture contact information from your ideal customers.',
     colorClasses: 'text-teal-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -68,6 +74,7 @@ const gridFeatures = [
   },
   {
     title: 'Money Model',
+    description: 'Answers "How do I get them to buy?" by designing a complete, profitable sales system for your business.',
     colorClasses: 'text-pink-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -77,6 +84,7 @@ const gridFeatures = [
   },
   {
     title: 'Customer Journey Maps',
+    description: 'Creates a visual blueprint of the path a customer takes, ensuring a seamless and profitable experience.',
     colorClasses: 'text-indigo-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -87,6 +95,7 @@ const gridFeatures = [
   },
   {
     title: 'Scale with CAC & CLV',
+    description: 'Uses data (Customer Acquisition Cost & Lifetime Value) to provide a clear roadmap for sustainable growth.',
     colorClasses: 'text-red-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -135,18 +144,21 @@ const Features: React.FC = () => {
           {gridFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="group relative flex flex-col items-center text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+              className="group relative flex flex-col text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
+              viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <IconWrapper colorClasses={feature.colorClasses}>
                 {feature.icon}
               </IconWrapper>
-              <h3 className="text-xl font-bold text-white">
+              <h3 className="text-xl font-bold text-white mb-2">
                 {feature.title}
               </h3>
+              <p className="text-gray-400 text-base leading-relaxed">
+                {feature.description}
+              </p>
             </motion.div>
           ))}
         </div>
