@@ -34,8 +34,8 @@ const App = () => {
       <main>
         <Hero />
         <Features />
-        <Testimonials />
          <Pricing />
+         <Testimonials />
         <CTA />
       </main>
       <Footer />
