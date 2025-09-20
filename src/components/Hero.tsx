@@ -5,7 +5,7 @@ const Hero: React.FC = () => {
   const words = ["Build", "Profitable", "Business", "Systems", "with", "AI"]; //Scopy Your AI Growth Team 
   
   return (
-    <section id="home" className="flex min-h-screen items-center">
+    <section id="home" className="flex min-h-screen items-center bg-gradient-to-b from-black via-black to-gray-900">
       <div className="container mx-auto flex flex-col lg:flex-row items-center px-6 lg:px-12 py-12">
         {/* Text content on the left */}
         <div className="flex-1 text-white pr-0 lg:pr-16 pl-4 lg:pl-8 mb-12 lg:mb-0">
