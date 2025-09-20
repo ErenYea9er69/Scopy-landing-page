@@ -1,131 +1,112 @@
 // features.tsx
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
+
+// Helper component for the icons to reduce repetition
+const IconWrapper: React.FC<{ children: React.ReactNode; colorClasses: string; }> = ({ children, colorClasses }) => (
+  <div className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 mb-4 shadow-lg ${colorClasses}`}>
+    <div className="absolute inset-0 rounded-2xl opacity-20 blur-md bg-current"></div>
+    {children}
+  </div>
+);
+
+// Define the features for the grid
+const gridFeatures = [
+  {
+    title: 'Offer Architect',
+    colorClasses: 'text-orange-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+      </svg>
+    ),
+  },
+  {
+    title: 'The Value Equation',
+    colorClasses: 'text-green-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Grand Slam Offer',
+    colorClasses: 'text-blue-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M4 17v4m-2-2h4m11-4v4m-2-2h4M12 3a9 9 0 019 9h-3a6 6 0 00-6-6V3zM12 3a9 9 0 00-9 9H0a6 6 0 016-6V3z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Lead Generation',
+    colorClasses: 'text-purple-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Four Core Channels',
+    colorClasses: 'text-yellow-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4 11.25v2.572a1.5 1.5 0 00.72 1.3l5.25 3.03a1.5 1.5 0 001.56 0l5.25-3.03a1.5 1.5 0 00.72-1.3V11.25m-1.5 0V7.5a1.5 1.5 0 00-1.5-1.5h-9a1.5 1.5 0 00-1.5 1.5v3.75m1.5 0h9" />
+      </svg>
+    ),
+  },
+  {
+    title: 'AI Lead Magnets',
+    colorClasses: 'text-teal-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Money Model',
+    colorClasses: 'text-pink-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75A.75.75 0 015.25 6v.75m0 0v-.75A.75.75 0 015.25 4.5h-.75m0 0V3.75c0-.621.504-1.125 1.125-1.125h1.5c.621 0 1.125.504 1.125 1.125V4.5m-3.75 0h3.75M3 12h18M3 15h18" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Customer Journey Maps',
+    colorClasses: 'text-indigo-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.75V12m0 0V2.25" />
+      </svg>
+    ),
+  },
+  {
+    title: 'Scale with CAC & CLV',
+    colorClasses: 'text-red-400',
+    icon: (
+      <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+      </svg>
+    ),
+  },
+];
 
 const Features: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const features = [
-    {
-      id: 'offer-architect',
-      title: 'Offer Architect',
-      description: 'Solve the question: "What should I sell?" by building offers so compelling people cant say no.',
-      coreFunction: 'Design, evaluate, and improve your offers using a specific formula for value.',
-      icon: (
-        <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L4 6V18L12 22L20 18V6L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12L12 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M8 8L16 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
-      ),
-      frameworks: [
-        {
-          title: 'The Value Equation',
-          description: 'Value = (Dream Outcome × Likelihood of Success) ÷ (Time Delay × Effort and Sacrifice). Maximize the top part and minimize the bottom part.'
-        },
-        {
-          title: 'Grand Slam Offer Construction',
-          description: 'Step-by-step process to build your offer by identifying customer dream outcomes, listing problems, and creating solutions.'
-        },
-        {
-          title: 'Offer Enhancement Tools',
-          description: 'Includes guarantees, pricing psychology, bonuses, scarcity, urgency, and offer naming techniques.'
-        }
-      ]
-    },
-    {
-      id: 'lead-generation',
-      title: 'Lead Generation Specialist',
-      description: 'Answer: "How do I find buyers?" with strategies that capture real intent, not just attention.',
-      coreFunction: 'Generate and capture leads from prospects who show real intent to buy.',
-      icon: (
-        <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="currentColor" strokeWidth="2"/>
-          <path d="M12 16L12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M12 8L12 8.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
-      ),
-      frameworks: [
-        {
-          title: 'The Four Core Channels',
-          description: 'Warm outreach, free content marketing, cold outreach, and paid advertising strategies.'
-        },
-        {
-          title: 'Lead Magnet Creation',
-          description: 'Guides you in creating valuable free resources that solve specific problems for your ideal customer.'
-        },
-        {
-          title: 'Actionable Deliverables',
-          description: 'Complete audit, channel-specific action plans, outreach scripts, email templates, and a 90-day implementation roadmap.'
-        }
-      ]
-    },
-    {
-      id: 'money-model',
-      title: 'Money Model Architect',
-      description: 'Answer: "How do I get them to buy?" by designing a complete model that maximizes customers and revenue.',
-      coreFunction: 'Design a system where profit from one customer exceeds the cost of acquiring several new ones.',
-      icon: (
-        <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M12 2L4 6V18L12 22L20 18V6L12 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M12 12L12 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M8 8L16 8" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-          <path d="M12 16L12 16.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
-      ),
-      frameworks: [
-        {
-          title: 'The Four Offer Types',
-          description: 'Attraction, upsell, downsell, and continuity offers that work together as a complete sales system.'
-        },
-        {
-          title: 'Economic Modeling',
-          description: 'Calculate and track critical business metrics like CAC and CLV to ensure profitability.'
-        },
-        {
-          title: 'Strategic Deliverables',
-          description: 'Complete blueprint, customer journey map, pricing recommendations, and scaling roadmap.'
-        }
-      ]
-    }
-  ];
-
-  // Handle continuous auto-rotation
-  useEffect(() => {
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % features.length);
-    }, 5000);
-    
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [features.length]);
-
-  // Handle manual navigation
-  const goToFeature = (index: number) => {
-    setCurrentIndex(index);
-    // Reset the interval when manually navigating
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-    intervalRef.current = setInterval(() => {
-      setCurrentIndex(prev => (prev + 1) % features.length);
-    }, 5000);
-  };
-
   return (
     <section 
       id="features" 
-      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden min-h-screen"
+      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       
-      <div className="container mx-auto px-6 relative z-10 h-full">
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
           <motion.h2 
             className="text-4xl md:text-5xl font-bold text-white mb-4"
@@ -149,105 +130,30 @@ const Features: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Simple 3-dot navigation */}
-        <div className="flex justify-center mb-12">
-          <div className="flex items-center space-x-2">
-            {features.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => goToFeature(index)}
-                className={`transition-all duration-300 ${
-                  index === currentIndex 
-                    ? 'w-6 h-2 bg-blue-500 rounded-full' 
-                    : 'w-2 h-2 bg-gray-500 rounded-full hover:bg-gray-400'
-                }`}
-                aria-label={`Go to ${features[index].title}`}
-              />
-            ))}
-          </div>
-        </div>
-
-        {/* Full-width feature content */}
-        <div className="relative min-h-[600px]">
-          <AnimatePresence mode="wait">
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {gridFeatures.map((feature, index) => (
             <motion.div
-              key={currentIndex}
+              key={feature.title}
+              className="group relative flex flex-col items-center text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
               initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              className="absolute inset-0"
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
             >
-              {/* Logo and title at top left */}
-              <div className="flex items-center mb-8">
-                <div className="bg-gradient-to-br from-blue-600 to-purple-600 p-4 rounded-xl shadow-lg mr-6">
-                  <div className="text-white">
-                    {features[currentIndex].icon}
-                  </div>
-                </div>
-                <h3 className="text-3xl md:text-4xl font-bold text-white">
-                  {features[currentIndex].title}
-                </h3>
-              </div>
-
-              {/* Description */}
-              <div className="mb-8">
-                <p className="text-xl md:text-2xl text-gray-300 mb-6 leading-relaxed">
-                  {features[currentIndex].description}
-                </p>
-                
-                <div className="bg-gray-900/50 backdrop-blur-sm rounded-xl p-6 mb-8 border border-gray-700">
-                  <h4 className="text-blue-400 font-semibold text-lg mb-3">Core Function</h4>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    {features[currentIndex].coreFunction}
-                  </p>
-                </div>
-              </div>
-              
-              {/* Key Frameworks */}
-              <div>
-                <h4 className="text-2xl font-semibold text-white mb-6">Key Frameworks</h4>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {features[currentIndex].frameworks.map((framework, idx) => (
-                    <motion.div 
-                      key={idx} 
-                      className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-colors"
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    >
-                      <div className="flex items-start mb-3">
-                        <div className="flex-shrink-0 mt-1 mr-3">
-                          <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                        </div>
-                        <h5 className="font-semibold text-white text-lg">
-                          {framework.title}
-                        </h5>
-                      </div>
-                      <p className="text-gray-400 leading-relaxed">
-                        {framework.description}
-                      </p>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
+              <IconWrapper colorClasses={feature.colorClasses}>
+                {feature.icon}
+              </IconWrapper>
+              <h3 className="text-xl font-bold text-white">
+                {feature.title}
+              </h3>
             </motion.div>
-          </AnimatePresence>
-        </div>
-        
-        {/* Auto-rotation indicator */}
-        <div className="mt-12 text-center">
-          <div className="inline-flex items-center bg-gray-800/30 backdrop-blur-sm rounded-full px-4 py-2 border border-gray-700/50">
-            <div className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-            <p className="text-gray-400 text-sm">
-              Auto-rotating every 5 seconds
-            </p>
-          </div>
+          ))}
         </div>
         
         {/* Call to action */}
         <motion.div 
-          className="mt-16 text-center"
+          className="mt-20 text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
