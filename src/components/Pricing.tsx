@@ -127,37 +127,7 @@ const Pricing: React.FC = () => {
             </motion.div>
           ))}
         </div>
-        
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <p className="text-gray-400 text-sm mb-4">
-            All plans include 14-day free trial • No credit card required
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 text-xs text-gray-500">
-            <span className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-              Cancel anytime
-            </span>
-            <span className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-              SSL Encrypted
-            </span>
-            <span className="flex items-center">
-              <svg className="w-4 h-4 text-green-400 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
-              </svg>
-              24/7 Support
-            </span>
-          </div>
-        </motion.div>
+
       </div>
     </section>
   );
