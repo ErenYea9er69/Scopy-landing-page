@@ -24,7 +24,7 @@ const gridFeatures = [
   },
   {
     title: 'The Value Equation',
-    description: 'Maximizes your offer’s appeal by boosting the dream outcome while minimizing customer effort and delay.',
+    description: 'Maximizes your offers appeal by boosting the dream outcome while minimizing customer effort and delay.',
     colorClasses: 'text-green-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -78,7 +78,7 @@ const gridFeatures = [
     colorClasses: 'text-pink-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75A.75.75 0 015.25 6v.75m0 0v-.75A.75.75 0 015.25 4.5h-.75m0 0V3.75c0-.621.504-1.125 1.125-1.125h1.5c.621 0 1.125.504 1.125 1.125V4.5m-3.75 0h3.75M3 12h18M3 15h18" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0015.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75A.75.75 0 015.25 6v.75m0 0v-.75A.75.75 0 015.25 4.5h-.75m0 0V3.75c0-.621.504-1.125 1.125-1.125h1.5c.621 0 1.125.504 1.125 1.125V4.5m-3.75 0h3.75M3 12h18M3 15h18" />
       </svg>
     ),
   },
@@ -88,7 +88,7 @@ const gridFeatures = [
     colorClasses: 'text-indigo-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0014.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
         <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.75V12m0 0V2.25" />
       </svg>
     ),
@@ -135,7 +135,7 @@ const Features: React.FC = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
-            Scopy AI doesn't just give advice — it builds your entire business system with precision, logic, and emotional intelligence.
+            Scopy AI doesn't just give advice, it builds your entire business system with precision, logic, and emotional intelligence.
           </motion.p>
         </div>
 
@@ -144,7 +144,7 @@ const Features: React.FC = () => {
           {gridFeatures.map((feature, index) => (
             <motion.div
               key={feature.title}
-              className="group relative flex flex-col text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-white/20 hover:bg-white/10"
+              className="group relative flex flex-col text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm transition-all duration-300 hover:border-gray-300 hover:shadow-[0_0_20px_rgba(156,163,175,0.8)] hover:bg-white/10"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
