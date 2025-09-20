@@ -162,33 +162,6 @@ const Features: React.FC = () => {
             </motion.div>
           ))}
         </div>
-        
-        {/* Call to action */}
-        <motion.div 
-          className="mt-20 text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-        >
-          <p className="text-gray-400 mb-6 max-w-2xl mx-auto text-lg">
-            Stop guessing. Start building profitable systems with AI-guided clarity.
-          </p>
-          <button
-            onClick={() => {
-              const element = document.getElementById('pricing');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="group inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-full shadow-lg hover:from-blue-500 hover:to-purple-500 transition-all duration-300 transform hover:scale-105"
-          >
-            <span>See How It Works</span>
-            <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
-        </motion.div>
       </div>
     </section>
   );
