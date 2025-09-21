@@ -6,7 +6,7 @@ const CTA: React.FC = () => {
     <section 
       className="min-h-screen relative flex items-center justify-center"
       style={{
-        backgroundImage: 'url("bb.jpg")',
+        backgroundImage: 'url("/assets/bb.jpg")', // Updated path
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
@@ -69,7 +69,7 @@ const CTA: React.FC = () => {
               {/* Logo */}
               <div className="w-32 h-32 mb-6 mx-auto lg:mx-0 flex items-center justify-center">
                 <img 
-                  src="logo.png" 
+                  src="/assets/logo.png" // Updated path
                   alt="ScopyAI Logo" 
                   className="w-full h-full object-contain"
                 />
