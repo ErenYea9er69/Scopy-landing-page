@@ -18,7 +18,9 @@ const gridFeatures = [
     colorClasses: 'text-orange-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 3.5L12 8l4.5-4.5M12 8v13" />
+        <circle cx="12" cy="4" r="2" fill="currentColor"/>
       </svg>
     ),
   },
@@ -28,7 +30,10 @@ const gridFeatures = [
     colorClasses: 'text-green-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12l2 2 4-4"/>
+        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 16h6M9 8h6"/>
       </svg>
     ),
   },
@@ -38,7 +43,11 @@ const gridFeatures = [
     colorClasses: 'text-blue-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M5 3v4M3 5h4M4 17v4m-2-2h4m11-4v4m-2-2h4M12 3a9 9 0 019 9h-3a6 6 0 00-6-6V3zM12 3a9 9 0 00-9 9H0a6 6 0 016-6V3z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 7L9 19l-5.5-5.5"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2v6.5M8.5 4.5L12 8l3.5-3.5"/>
+        <circle cx="12" cy="18" r="3" fill="none" stroke="currentColor" strokeWidth="2"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 12h6M21 12h-6"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M16 7l2 2-2 2M8 7L6 9l2 2"/>
       </svg>
     ),
   },
@@ -48,7 +57,11 @@ const gridFeatures = [
     colorClasses: 'text-purple-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M15 21a6 6 0 00-9-5.197M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 12c0 1.2-4.03 6-9 6s-9-4.8-9-6c0-1.2 4.03-6 9-6s9 4.8 9 6z"/>
+        <circle cx="12" cy="12" r="3"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 1v6M23 12h-6M12 17v6M1 12h6"/>
+        <circle cx="12" cy="12" r="1" fill="currentColor"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 9l6 6M15 9l-6 6" opacity="0.3"/>
       </svg>
     ),
   },
@@ -58,7 +71,13 @@ const gridFeatures = [
     colorClasses: 'text-yellow-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M4 11.25v2.572a1.5 1.5 0 00.72 1.3l5.25 3.03a1.5 1.5 0 001.56 0l5.25-3.03a1.5 1.5 0 00.72-1.3V11.25m-1.5 0V7.5a1.5 1.5 0 00-1.5-1.5h-9a1.5 1.5 0 00-1.5 1.5v3.75m1.5 0h9" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="1"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8M8 12h8"/>
+        <circle cx="6" cy="6" r="2" fill="currentColor" opacity="0.6"/>
+        <circle cx="18" cy="6" r="2" fill="currentColor" opacity="0.6"/>
+        <circle cx="6" cy="18" r="2" fill="currentColor" opacity="0.6"/>
+        <circle cx="18" cy="18" r="2" fill="currentColor" opacity="0.6"/>
       </svg>
     ),
   },
@@ -68,7 +87,11 @@ const gridFeatures = [
     colorClasses: 'text-teal-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 4.21l4.5 2.6 4.5-2.6M12 6.81V17.5"/>
+        <circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 10.5v3M10.5 12h3"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M8 8l8 8M16 8l-8 8" opacity="0.2"/>
       </svg>
     ),
   },
@@ -78,7 +101,13 @@ const gridFeatures = [
     colorClasses: 'text-pink-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18.75a60.07 60.07 0 0015.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.75A.75.75 0 013 4.5h.75m0 0h.75A.75.75 0 015.25 6v.75m0 0v-.75A.75.75 0 015.25 4.5h-.75m0 0V3.75c0-.621.504-1.125 1.125-1.125h1.5c.621 0 1.125.504 1.125 1.125V4.5m-3.75 0h3.75M3 12h18M3 15h18" />
+        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+        <line x1="8" y1="21" x2="16" y2="21"/>
+        <line x1="12" y1="17" x2="12" y2="21"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M12 7v2M10 9h4"/>
+        <circle cx="12" cy="10" r="3" fill="none" stroke="currentColor" strokeWidth="1.5"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 13l2-2 2 2M13 13l2-2 2 2"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 6h6M9 14h6" opacity="0.4"/>
       </svg>
     ),
   },
@@ -88,8 +117,13 @@ const gridFeatures = [
     colorClasses: 'text-indigo-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0014.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 21.75V12m0 0V2.25" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 01.553-.894L9 2l6 3 5.447-2.724A1 1 0 0121 3.618v10.764a1 1 0 01-.553.894L15 18l-6-3z"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M9 2v18M15 5v13"/>
+        <circle cx="6" cy="8" r="1.5" fill="currentColor"/>
+        <circle cx="12" cy="10" r="1.5" fill="currentColor"/>
+        <circle cx="18" cy="12" r="1.5" fill="currentColor"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M6 8l6 2M12 10l6 2"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15h4M13 17h4" opacity="0.5"/>
       </svg>
     ),
   },
@@ -99,7 +133,14 @@ const gridFeatures = [
     colorClasses: 'text-red-400',
     icon: (
       <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M3 3v18h18"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 16l4-4 4 4 6-6"/>
+        <circle cx="7" cy="16" r="2" fill="currentColor" opacity="0.7"/>
+        <circle cx="11" cy="12" r="2" fill="currentColor" opacity="0.7"/>
+        <circle cx="15" cy="16" r="2" fill="currentColor" opacity="0.7"/>
+        <circle cx="21" cy="10" r="2" fill="currentColor"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 6l4 4-4 4"/>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M7 20v-8M11 20v-12M15 20v-8M19 20v-16" opacity="0.3"/>
       </svg>
     ),
   },
