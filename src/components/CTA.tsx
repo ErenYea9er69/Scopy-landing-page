@@ -3,43 +3,86 @@ import { motion } from 'framer-motion';
 
 const CTA: React.FC = () => {
   return (
-    <section className="py-20 px-6">
-      <div className="container mx-auto">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-3xl p-12 text-center relative overflow-hidden"
-        >
-          {/* Animated gradient overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent opacity-0 hover:opacity-10 transition-opacity duration-500 transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%]"></div>
+    <section 
+      className="min-h-screen relative flex items-center justify-center"
+      style={{
+        backgroundImage: 'url("bb.jpg")',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Overlay for better text readability */}
+      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between min-h-[80vh]">
           
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-blue-100 text-xl mb-8 max-w-2xl mx-auto">
-            Join thousands of entrepreneurs who are building profitable businesses with Scopy AI
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <motion.button 
+          {/* Left Side Content */}
+          <div className="flex-1 text-left">
+            {/* Bold text at top left */}
+            <motion.h1
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-12 leading-tight"
+            >
+              step beyond the known.
+            </motion.h1>
+            
+            {/* Join us text */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mb-8"
+            >
+              <p className="text-2xl md:text-3xl lg:text-4xl text-white mb-2">
+                join us to
+              </p>
+              <p className="text-2xl md:text-3xl lg:text-4xl text-white font-bold">
+                Build Profitable Business
+              </p>
+            </motion.div>
+            
+            {/* Button */}
+            <motion.button
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-white text-blue-600 font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 relative overflow-hidden"
+              className="bg-white text-black font-bold py-4 px-8 rounded-full text-lg hover:bg-gray-100 transition-all duration-300 shadow-lg"
             >
-              <span className="relative z-10">Start Free Trial</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500"></div>
-            </motion.button>
-            <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-transparent border-2 border-white text-white font-bold py-4 px-8 rounded-full text-lg hover:bg-white hover:text-blue-600 transition-all duration-300 relative overflow-hidden"
-            >
-              <span className="relative z-10">Schedule Demo</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-500 opacity-0 hover:opacity-20"></div>
+              Start the Conversation
             </motion.button>
           </div>
-        </motion.div>
+          
+          {/* Right Side - Logo and ScopyAI */}
+          <div className="flex-1 flex flex-col items-center justify-center lg:items-end mt-12 lg:mt-0">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="text-center lg:text-right"
+            >
+              {/* Logo */}
+              <div className="w-32 h-32 mb-6 mx-auto lg:mx-0 flex items-center justify-center">
+                <img 
+                  src="logo.png" 
+                  alt="ScopyAI Logo" 
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              
+              {/* ScopyAI text */}
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+                ScopyAI
+              </h2>
+            </motion.div>
+          </div>
+          
+        </div>
       </div>
     </section>
   );
