@@ -65,28 +65,58 @@ const Pricing: React.FC = () => {
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50, scale: 0.8 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ 
+            duration: 0.8,
+            ease: "easeOut",
+            staggerChildren: 0.2,
+            delayChildren: 0.3
+          }}
         >
-          <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          <motion.h2 
+            className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Pricing & Plans
-          </h2>
-          <p className="text-xl text-gray-400">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             Pick the plan that suits you best
             <span className="block mt-2 text-sm text-gray-500">
               All plans include a free trial.
             </span>
-          </p>
+          </motion.p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan, index) => (
             <motion.div 
               key={plan.name}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ ...springConfig, delay: index * 0.1 }}
+              initial={{ 
+                opacity: 0, 
+                y: 100,
+                scale: 0.7,
+                rotateX: -30
+              }}
+              animate={{ 
+                opacity: 1, 
+                y: 0, 
+                scale: 1,
+                rotateX: 0
+              }}
+              transition={{ 
+                ...springConfig, 
+                delay: index * 0.15,
+                duration: 0.8,
+                ease: "easeOut"
+              }}
               whileHover={{ 
                 scale: 1.02,
                 transition: { duration: 0.2 }
@@ -100,35 +130,62 @@ const Pricing: React.FC = () => {
               }`}
             >
               {plan.highlighted && (
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <motion.div 
+                  className="absolute -top-3 left-1/2 transform -translate-x-1/2"
+                  initial={{ opacity: 0, scale: 0.5, y: -20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  transition={{ delay: index * 0.15 + 0.3 }}
+                >
                   <span className="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-medium backdrop-blur-sm border-2 border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                     Most Popular
                   </span>
-                </div>
+                </motion.div>
               )}
               
               <div className="mb-6">
                 <div className="flex items-center gap-2 mb-2">
-                  <h3 className={`text-2xl font-bold ${
-                    plan.name === 'Free' ? 'text-gray-400' : 'text-white'
-                  }`}>
+                  <motion.h3 
+                    className={`text-2xl font-bold ${
+                      plan.name === 'Free' ? 'text-gray-400' : 'text-white'
+                    }`}
+                    initial={{ opacity: 0, x: -30 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.15 + 0.2 }}
+                  >
                     {plan.name}
-                  </h3>
-                  <span className={`text-xs px-2 py-1 rounded-full ${
-                    plan.name === 'Free'
-                      ? 'bg-[#2a2a2c] text-gray-500'
-                      : 'bg-[#4a4a4c] text-gray-300'
-                  }`}>
+                  </motion.h3>
+                  <motion.span 
+                    className={`text-xs px-2 py-1 rounded-full ${
+                      plan.name === 'Free'
+                        ? 'bg-[#2a2a2c] text-gray-500'
+                        : 'bg-[#4a4a4c] text-gray-300'
+                    }`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.3 }}
+                  >
                     Beta
-                  </span>
+                  </motion.span>
                 </div>
                 <div className="flex items-baseline">
-                  <span className={`text-4xl font-bold ${
-                    plan.name === 'Free' ? 'text-gray-400' : 'text-white'
-                  }`}>
+                  <motion.span 
+                    className={`text-4xl font-bold ${
+                      plan.name === 'Free' ? 'text-gray-400' : 'text-white'
+                    }`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: index * 0.15 + 0.4 }}
+                  >
                     {plan.price}
-                  </span>
-                  <span className="text-gray-400 ml-1">{plan.period}</span>
+                  </motion.span>
+                  <motion.span 
+                    className="text-gray-400 ml-1"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: index * 0.15 + 0.5 }}
+                  >
+                    {plan.period}
+                  </motion.span>
                 </div>
               </div>
               
@@ -139,9 +196,9 @@ const Pricing: React.FC = () => {
                     className={`flex items-start text-sm ${
                       plan.name === 'Free' ? 'text-gray-500' : 'text-gray-300'
                     }`}
-                    initial={{ opacity: 0, x: -10 }}
+                    initial={{ opacity: 0, x: -30 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + featureIndex * 0.05 }}
+                    transition={{ delay: index * 0.15 + featureIndex * 0.08 + 0.6 }}
                   >
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5 ${
                       plan.name === 'Free' 
@@ -160,7 +217,12 @@ const Pricing: React.FC = () => {
               </ul>
               
               {plan.name === 'Free' && (
-                <div className="mt-auto">
+                <motion.div 
+                  className="mt-auto"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.15 + 0.8 }}
+                >
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
@@ -168,7 +230,7 @@ const Pricing: React.FC = () => {
                   >
                     Try it for Free
                   </motion.button>
-                </div>
+                </motion.div>
               )}
               
             </motion.div>
