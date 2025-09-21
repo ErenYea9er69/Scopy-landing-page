@@ -159,20 +159,15 @@ const Pricing: React.FC = () => {
                 ))}
               </ul>
               
-              <motion.button 
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.98 }}
-                className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 ${
-                  plan.highlighted
-                    ? 'bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-                    : plan.name === 'Free'
-                      ? 'bg-[#3a3a3c] text-gray-400 cursor-not-allowed'
-                      : 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
-                }`}
-                disabled={plan.name === 'Free'}
-              >
-                {plan.name === 'Free' ? 'Current Plan' : `Upgrade to ${plan.name}`}
-              </motion.button>
+              {plan.name === 'Free' && (
+                <motion.button 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 bg-white text-black hover:bg-gray-200"
+                >
+                  Try it for Free
+                </motion.button>
+              )}
             </motion.div>
           ))}
         </div>
