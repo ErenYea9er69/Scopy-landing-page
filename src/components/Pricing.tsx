@@ -91,7 +91,7 @@ const Pricing: React.FC = () => {
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
-              className={`relative rounded-2xl p-6 transition-all duration-300 ${
+              className={`relative rounded-2xl p-6 transition-all duration-300 flex flex-col ${
                 plan.highlighted 
                   ? 'bg-white/5 border-2 border-white/40 shadow-[0_0_30px_rgba(156,163,175,0.3)] backdrop-blur-sm hover:border-white/50 hover:shadow-[0_0_40px_rgba(156,163,175,0.4)]'
                   : plan.name === 'Free'
@@ -132,7 +132,7 @@ const Pricing: React.FC = () => {
                 </div>
               </div>
               
-              <ul className="space-y-3 mb-8">
+              <ul className={`space-y-3 ${plan.name === 'Free' ? 'mb-8 flex-grow' : 'mb-8'}`}>
                 {plan.features.map((feature, featureIndex) => (
                   <motion.li 
                     key={feature} 
@@ -160,13 +160,15 @@ const Pricing: React.FC = () => {
               </ul>
               
               {plan.name === 'Free' && (
-                <motion.button 
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 bg-white text-black hover:bg-gray-200"
-                >
-                  Try it for Free
-                </motion.button>
+                <div className="mt-auto">
+                  <motion.button 
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 bg-white text-black hover:bg-gray-200"
+                  >
+                    Try it for Free
+                  </motion.button>
+                </div>
               )}
             </motion.div>
           ))}
