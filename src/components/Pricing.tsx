@@ -61,7 +61,7 @@ const Pricing: React.FC = () => {
   const springConfig = { type: "spring" as const, damping: 25, stiffness: 300, mass: 0.5 };
 
   return (
-    <section className="py-20 px-4 bg-[#0D0D0D] min-h-screen">
+    <section className="py-20 px-4 bg-gradient-to-b from-[#111111] via-[#0D0D0D] to-[#0D0D0D] min-h-screen">
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-16"
@@ -170,7 +170,9 @@ const Pricing: React.FC = () => {
                   </motion.button>
                 </div>
               )}
+              
             </motion.div>
+            
           ))}
         </div>
 

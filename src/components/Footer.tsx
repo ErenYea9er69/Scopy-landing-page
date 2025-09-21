@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-black py-8 px-3">
+    <footer className="bg-gradient-to-b from-[#0D0D0D] via-[#070707] to-black py-8 px-3">
       <div className="container mx-auto max-w-6xl">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-12">
           {[
