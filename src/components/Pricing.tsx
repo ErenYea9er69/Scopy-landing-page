@@ -1,7 +1,15 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const Pricing: React.FC = () => {
+  // Create refs for different sections to trigger animations independently
+  const headerRef = useRef(null);
+  const cardsRef = useRef(null);
+  
+  // Check if elements are in view
+  const headerInView = useInView(headerRef, { once: true, margin: "-100px" });
+  const cardsInView = useInView(cardsRef, { once: true, margin: "-50px" });
+
   const plans = [
     {
       name: "Free",
@@ -64,9 +72,10 @@ const Pricing: React.FC = () => {
     <section className="py-20 px-4 bg-gradient-to-b from-[#111111] via-[#0D0D0D] to-[#0D0D0D] min-h-screen">
       <div className="container mx-auto max-w-6xl">
         <motion.div 
+          ref={headerRef}
           className="text-center mb-16"
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
+          animate={headerInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
           transition={{ 
             duration: 0.8,
             ease: "easeOut",
@@ -77,7 +86,7 @@ const Pricing: React.FC = () => {
           <motion.h2 
             className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             Pricing & Plans
@@ -85,7 +94,7 @@ const Pricing: React.FC = () => {
           <motion.p 
             className="text-xl text-gray-400"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             Pick the plan that suits you best
@@ -95,7 +104,7 @@ const Pricing: React.FC = () => {
           </motion.p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {plans.map((plan, index) => (
             <motion.div 
               key={plan.name}
@@ -105,15 +114,20 @@ const Pricing: React.FC = () => {
                 scale: 0.7,
                 rotateX: -30
               }}
-              animate={{ 
+              animate={cardsInView ? { 
                 opacity: 1, 
                 y: 0, 
                 scale: 1,
                 rotateX: 0
+              } : {
+                opacity: 0, 
+                y: 100,
+                scale: 0.7,
+                rotateX: -30
               }}
               transition={{ 
                 ...springConfig, 
-                delay: index * 0.15,
+                delay: cardsInView ? index * 0.15 : 0,
                 duration: 0.8,
                 ease: "easeOut"
               }}
@@ -133,8 +147,8 @@ const Pricing: React.FC = () => {
                 <motion.div 
                   className="absolute -top-3 left-1/2 transform -translate-x-1/2"
                   initial={{ opacity: 0, scale: 0.5, y: -20 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ delay: index * 0.15 + 0.3 }}
+                  animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: -20 }}
+                  transition={{ delay: cardsInView ? index * 0.15 + 0.3 : 0 }}
                 >
                   <span className="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-medium backdrop-blur-sm border-2 border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                     Most Popular
@@ -149,8 +163,8 @@ const Pricing: React.FC = () => {
                       plan.name === 'Free' ? 'text-gray-400' : 'text-white'
                     }`}
                     initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.15 + 0.2 }}
+                    animate={cardsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                    transition={{ delay: cardsInView ? index * 0.15 + 0.2 : 0 }}
                   >
                     {plan.name}
                   </motion.h3>
@@ -161,8 +175,8 @@ const Pricing: React.FC = () => {
                         : 'bg-[#4a4a4c] text-gray-300'
                     }`}
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.15 + 0.3 }}
+                    animate={cardsInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: cardsInView ? index * 0.15 + 0.3 : 0 }}
                   >
                     Beta
                   </motion.span>
@@ -173,16 +187,16 @@ const Pricing: React.FC = () => {
                       plan.name === 'Free' ? 'text-gray-400' : 'text-white'
                     }`}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: index * 0.15 + 0.4 }}
+                    animate={cardsInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{ delay: cardsInView ? index * 0.15 + 0.4 : 0 }}
                   >
                     {plan.price}
                   </motion.span>
                   <motion.span 
                     className="text-gray-400 ml-1"
                     initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: index * 0.15 + 0.5 }}
+                    animate={cardsInView ? { opacity: 1 } : { opacity: 0 }}
+                    transition={{ delay: cardsInView ? index * 0.15 + 0.5 : 0 }}
                   >
                     {plan.period}
                   </motion.span>
@@ -197,8 +211,8 @@ const Pricing: React.FC = () => {
                       plan.name === 'Free' ? 'text-gray-500' : 'text-gray-300'
                     }`}
                     initial={{ opacity: 0, x: -30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.15 + featureIndex * 0.08 + 0.6 }}
+                    animate={cardsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+                    transition={{ delay: cardsInView ? index * 0.15 + featureIndex * 0.08 + 0.6 : 0 }}
                   >
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5 ${
                       plan.name === 'Free' 
@@ -220,8 +234,8 @@ const Pricing: React.FC = () => {
                 <motion.div 
                   className="mt-auto"
                   initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.15 + 0.8 }}
+                  animate={cardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ delay: cardsInView ? index * 0.15 + 0.8 : 0 }}
                 >
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
