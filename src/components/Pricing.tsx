@@ -70,9 +70,14 @@ const Pricing: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
-            Scopy AI Pricing Plans
+            Pricing & Plans
           </h2>
-          <p className="text-xl text-gray-400">Choose your AI Growth Assistant plan</p>
+          <p className="text-xl text-gray-400">
+            Pick the plan that suits you best
+            <span className="block mt-2 text-sm text-gray-500">
+              All plans include a free trial.
+            </span>
+          </p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
