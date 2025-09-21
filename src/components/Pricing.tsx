@@ -66,7 +66,13 @@ const Pricing: React.FC = () => {
     }
   ];
 
-  const springConfig = { type: "spring" as const, damping: 25, stiffness: 300, mass: 0.5 };
+  // Update the spring config for slower animations
+  const springConfig = { 
+    type: "spring" as const, 
+    damping: 20, // Reduced from 25
+    stiffness: 200, // Reduced from 300
+    mass: 0.8 // Increased from 0.5
+  };
 
   return (
     <section className="py-20 px-4 bg-gradient-to-b from-[#111111] via-[#0D0D0D] to-[#0D0D0D] min-h-screen">
@@ -77,17 +83,17 @@ const Pricing: React.FC = () => {
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           animate={headerInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
           transition={{ 
-            duration: 0.8,
+            duration: 1.2, // Increased from 0.8
             ease: "easeOut",
-            staggerChildren: 0.2,
-            delayChildren: 0.3
+            staggerChildren: 0.3, // Increased from 0.2
+            delayChildren: 0.5 // Increased from 0.3
           }}
         >
           <motion.h2 
             className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.4 }} // Increased from 0.6 and 0.2
           >
             Pricing & Plans
           </motion.h2>
@@ -95,7 +101,7 @@ const Pricing: React.FC = () => {
             className="text-xl text-gray-400"
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }} // Increased from 0.6 and 0.4
           >
             Pick the plan that suits you best
             <span className="block mt-2 text-sm text-gray-500">
@@ -127,8 +133,8 @@ const Pricing: React.FC = () => {
               }}
               transition={{ 
                 ...springConfig, 
-                delay: cardsInView ? index * 0.15 : 0,
-                duration: 0.8,
+                delay: cardsInView ? index * 0.25 : 0, // Increased from 0.15
+                duration: 1.2, // Increased from 0.8
                 ease: "easeOut"
               }}
               whileHover={{ 
@@ -148,7 +154,7 @@ const Pricing: React.FC = () => {
                   className="absolute -top-3 left-1/2 transform -translate-x-1/2"
                   initial={{ opacity: 0, scale: 0.5, y: -20 }}
                   animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: -20 }}
-                  transition={{ delay: cardsInView ? index * 0.15 + 0.3 : 0 }}
+                  transition={{ delay: cardsInView ? index * 0.25 + 0.5 : 0 }} // Increased delays
                 >
                   <span className="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-medium backdrop-blur-sm border-2 border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                     Most Popular
@@ -164,7 +170,7 @@ const Pricing: React.FC = () => {
                     }`}
                     initial={{ opacity: 0, x: -30 }}
                     animate={cardsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ delay: cardsInView ? index * 0.15 + 0.2 : 0 }}
+                    transition={{ delay: cardsInView ? index * 0.25 + 0.4 : 0 }}
                   >
                     {plan.name}
                   </motion.h3>
@@ -176,7 +182,7 @@ const Pricing: React.FC = () => {
                     }`}
                     initial={{ opacity: 0 }}
                     animate={cardsInView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ delay: cardsInView ? index * 0.15 + 0.3 : 0 }}
+                    transition={{ delay: cardsInView ? index * 0.25 + 0.5 : 0 }}
                   >
                     Beta
                   </motion.span>
@@ -188,7 +194,7 @@ const Pricing: React.FC = () => {
                     }`}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={cardsInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-                    transition={{ delay: cardsInView ? index * 0.15 + 0.4 : 0 }}
+                    transition={{ delay: cardsInView ? index * 0.25 + 0.5 : 0 }}
                   >
                     {plan.price}
                   </motion.span>
@@ -196,7 +202,7 @@ const Pricing: React.FC = () => {
                     className="text-gray-400 ml-1"
                     initial={{ opacity: 0 }}
                     animate={cardsInView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ delay: cardsInView ? index * 0.15 + 0.5 : 0 }}
+                    transition={{ delay: cardsInView ? index * 0.25 + 0.6 : 0 }}
                   >
                     {plan.period}
                   </motion.span>
@@ -212,7 +218,7 @@ const Pricing: React.FC = () => {
                     }`}
                     initial={{ opacity: 0, x: -30 }}
                     animate={cardsInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-                    transition={{ delay: cardsInView ? index * 0.15 + featureIndex * 0.08 + 0.6 : 0 }}
+                    transition={{ delay: cardsInView ? index * 0.25 + featureIndex * 0.12 + 0.8 : 0 }}
                   >
                     <div className={`w-5 h-5 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5 ${
                       plan.name === 'Free' 
@@ -235,11 +241,12 @@ const Pricing: React.FC = () => {
                   className="mt-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={cardsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                  transition={{ delay: cardsInView ? index * 0.15 + 0.8 : 0 }}
+                  transition={{ delay: cardsInView ? index * 0.25 + 0.8 : 0 }}
                 >
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.4 }} // Increased from default
                     className="w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 bg-white text-black hover:bg-gray-200"
                   >
                     Try it for Free
