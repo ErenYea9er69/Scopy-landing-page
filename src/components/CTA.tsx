@@ -4,16 +4,17 @@ import { motion } from 'framer-motion';
 const CTA: React.FC = () => {
   return (
     <section 
-      className="min-h-screen relative flex items-center justify-center"
+      className="min-h-screen relative flex items-center justify-center bg-blend-overlay"
       style={{
-        backgroundImage: 'url("/assets/bb.jpg")', // Updated path
+        backgroundImage: 'url("/assets/bb.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)' // Added semi-transparent background
       }}
     >
-      {/* Overlay for better text readability */}
-      <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+      {/* Reduced overlay opacity and added gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[80vh]">
