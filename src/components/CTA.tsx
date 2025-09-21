@@ -6,7 +6,7 @@ const CTA: React.FC = () => {
     <section 
       className="min-h-screen relative flex items-center justify-center bg-blend-overlay"
       style={{
-        backgroundImage: 'url("/assets/bb.jpg")',
+        backgroundImage: 'url("/assets/bb.png")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

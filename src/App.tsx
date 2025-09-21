@@ -34,7 +34,6 @@ const App = () => {
         <Hero />
         <Features />
          <Pricing />
-         <CTA />
       </main>
       <Footer />
     </div>
