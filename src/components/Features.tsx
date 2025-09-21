@@ -150,7 +150,7 @@ const Features: React.FC = () => {
   return (
     <section 
       id="features" 
-      className="py-20 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden"
+      className="py-20 bg-gradient-to-b from-gray-900 to-[#0D0D0D] relative overflow-hidden"
     >
       {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
