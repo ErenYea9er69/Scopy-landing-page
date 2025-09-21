@@ -91,17 +91,17 @@ const Pricing: React.FC = () => {
                 scale: 1.02,
                 transition: { duration: 0.2 }
               }}
-              className={`relative rounded-2xl p-6 border transition-all duration-300 ${
+              className={`relative rounded-2xl p-6 transition-all duration-300 ${
                 plan.highlighted 
-                  ? 'bg-[#272626] border-blue-500/50 shadow-lg shadow-blue-500/10'
+                  ? 'bg-white/5 border-2 border-white/30 shadow-lg backdrop-blur-sm hover:border-white/50 hover:shadow-[0_0_30px_rgba(156,163,175,0.3)]'
                   : plan.name === 'Free'
-                    ? 'bg-[#1a1a1c] border-gray-700/50 hover:border-gray-600/50'
-                    : 'bg-[#181818] border-gray-600/50 hover:border-gray-500/50'
+                    ? 'border border-gray-700/50 bg-[#1a1a1c] hover:border-gray-600/50'
+                    : 'border border-gray-600/50 bg-[#181818] hover:border-gray-500/50'
               }`}
             >
               {plan.highlighted && (
                 <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-blue-600 text-white px-4 py-1 rounded-full text-sm font-medium">
+                  <span className="bg-white/10 text-white px-4 py-1 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20">
                     Most Popular
                   </span>
                 </div>
@@ -164,10 +164,10 @@ const Pricing: React.FC = () => {
                 whileTap={{ scale: 0.98 }}
                 className={`w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 ${
                   plan.highlighted
-                    ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                    ? 'bg-white/10 hover:bg-white/20 text-white border border-white/20'
                     : plan.name === 'Free'
                       ? 'bg-[#3a3a3c] text-gray-400 cursor-not-allowed'
-                      : 'bg-white text-black hover:bg-gray-200'
+                      : 'bg-white/5 hover:bg-white/10 text-white border border-white/10'
                 }`}
                 disabled={plan.name === 'Free'}
               >
