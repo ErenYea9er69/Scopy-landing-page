@@ -133,8 +133,8 @@ const Pricing: React.FC = () => {
               }}
               transition={{ 
                 ...springConfig, 
-                delay: cardsInView ? index * 0.25 : 0, // Increased from 0.15
-                duration: 1.2, // Increased from 0.8
+                delay: cardsInView ? index * 0.25 : 0, 
+                duration: 1.2, 
                 ease: "easeOut"
               }}
               whileHover={{ 
