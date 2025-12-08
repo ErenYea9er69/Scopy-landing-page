@@ -150,7 +150,6 @@ const Features: React.FC = () => {
       id="features" 
       className="py-20 bg-gradient-to-b from-gray-900 to-[#111111] relative overflow-hidden"
     >
-      {/* Background elements */}
       <div className="absolute top-20 left-10 w-64 h-64 bg-blue-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-purple-500 rounded-full mix-blend-soft-light filter blur-3xl opacity-20 animate-pulse"></div>
       
@@ -178,7 +177,6 @@ const Features: React.FC = () => {
           </motion.p>
         </div>
 
-        {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {gridFeatures.map((feature, index) => (
             <motion.div
