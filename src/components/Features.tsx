@@ -2,7 +2,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-// Helper component for the icons to reduce repetition
 const IconWrapper: React.FC<{ children: React.ReactNode; colorClasses: string; }> = ({ children, colorClasses }) => (
   <div className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 mb-4 shadow-lg ${colorClasses} flex-shrink-0 mx-auto`}>
     <div className="absolute inset-0 rounded-2xl opacity-20 blur-md bg-current"></div>
@@ -10,7 +9,6 @@ const IconWrapper: React.FC<{ children: React.ReactNode; colorClasses: string; }
   </div>
 );
 
-// Define the features for the grid, now with descriptions
 const gridFeatures = [
   {
     title: 'Offer Architect',
