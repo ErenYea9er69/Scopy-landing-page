@@ -66,12 +66,11 @@ const Pricing: React.FC = () => {
     }
   ];
 
-  // Update the spring config for slower animations
   const springConfig = { 
     type: "spring" as const, 
-    damping: 20, // Reduced from 25
-    stiffness: 200, // Reduced from 300
-    mass: 0.8 // Increased from 0.5
+    damping: 20, 
+    stiffness: 200, 
+    mass: 0.8 
   };
 
   return (
