@@ -61,16 +61,14 @@ const CTA: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="text-center lg:text-right"
             >
-              {/* Logo */}
               <div className="w-32 h-32 mb-6 mx-auto lg:mx-0 flex items-center justify-center">
                 <img 
-                  src="/assets/logo.png" // Updated path
+                  src="/assets/logo.png" 
                   alt="ScopyAI Logo" 
                   className="w-full h-full object-contain"
                 />
               </div>
               
-              {/* ScopyAI text */}
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
                 ScopyAI
               </h2>
