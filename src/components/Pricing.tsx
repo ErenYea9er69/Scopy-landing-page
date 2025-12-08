@@ -82,15 +82,15 @@ const Pricing: React.FC = () => {
           transition={{ 
             duration: 1.2, 
             ease: "easeOut",
-            staggerChildren: 0.3, // Increased from 0.2
-            delayChildren: 0.5 // Increased from 0.3
+            staggerChildren: 0.3, 
+            delayChildren: 0.5 
           }}
         >
           <motion.h2 
             className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.4 }} // Increased from 0.6 and 0.2
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             Pricing & Plans
           </motion.h2>
