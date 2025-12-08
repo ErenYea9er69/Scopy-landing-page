@@ -243,7 +243,7 @@ const Pricing: React.FC = () => {
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.98 }}
-                    transition={{ duration: 0.4 }} // Increased from default
+                    transition={{ duration: 0.4 }} 
                     className="w-full py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 bg-white text-black hover:bg-gray-200"
                   >
                     Try it for Free
