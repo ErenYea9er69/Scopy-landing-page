@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
 const Pricing: React.FC = () => {
-  // Create refs for different sections to trigger animations independently
   const headerRef = useRef(null);
   const cardsRef = useRef(null);
   
@@ -81,7 +80,7 @@ const Pricing: React.FC = () => {
           initial={{ opacity: 0, y: 50, scale: 0.8 }}
           animate={headerInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.8 }}
           transition={{ 
-            duration: 1.2, // Increased from 0.8
+            duration: 1.2, 
             ease: "easeOut",
             staggerChildren: 0.3, // Increased from 0.2
             delayChildren: 0.5 // Increased from 0.3
