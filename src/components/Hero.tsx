@@ -38,7 +38,6 @@ const Hero: React.FC = () => {
             
             {/* Buttons Section */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-              {/* Primary Pill Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -68,7 +67,6 @@ const Hero: React.FC = () => {
                 </div>
               </motion.div>
               
-              {/* Secondary Button with Play Icon */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
