@@ -28,7 +28,6 @@ const CTA: React.FC = () => {
               step beyond the known.
             </motion.h1>
             
-            {/* Join us text */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -43,7 +42,6 @@ const CTA: React.FC = () => {
               </p>
             </motion.div>
             
-            {/* Button */}
             <motion.button
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -56,7 +54,6 @@ const CTA: React.FC = () => {
             </motion.button>
           </div>
           
-          {/* Right Side - Logo and ScopyAI */}
           <div className="flex-1 flex flex-col items-center justify-center lg:items-end mt-12 lg:mt-0">
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
