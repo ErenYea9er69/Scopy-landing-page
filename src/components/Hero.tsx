@@ -94,7 +94,6 @@ const Hero: React.FC = () => {
           </div>
         </div>
         
-        {/* Video on the right */}
         <div className="flex-1 flex justify-center items-center pr-0 lg:pr-8">
           <div className="w-full max-w-lg">
             <video
