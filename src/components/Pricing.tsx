@@ -6,7 +6,6 @@ const Pricing: React.FC = () => {
   const headerRef = useRef(null);
   const cardsRef = useRef(null);
   
-  // Check if elements are in view
   const headerInView = useInView(headerRef, { once: true, margin: "-100px" });
   const cardsInView = useInView(cardsRef, { once: true, margin: "-50px" });
 
