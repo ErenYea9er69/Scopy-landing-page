@@ -98,7 +98,7 @@ const Pricing: React.FC = () => {
             className="text-xl text-gray-400"
             initial={{ opacity: 0, y: 20 }}
             animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-            transition={{ duration: 0.8, delay: 0.6 }} // Increased from 0.6 and 0.4
+            transition={{ duration: 0.8, delay: 0.6 }}
           >
             Pick the plan that suits you best
             <span className="block mt-2 text-sm text-gray-500">
@@ -151,7 +151,7 @@ const Pricing: React.FC = () => {
                   className="absolute -top-3 left-1/2 transform -translate-x-1/2"
                   initial={{ opacity: 0, scale: 0.5, y: -20 }}
                   animate={cardsInView ? { opacity: 1, scale: 1, y: 0 } : { opacity: 0, scale: 0.5, y: -20 }}
-                  transition={{ delay: cardsInView ? index * 0.25 + 0.5 : 0 }} // Increased delays
+                  transition={{ delay: cardsInView ? index * 0.25 + 0.5 : 0 }} 
                 >
                   <span className="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-medium backdrop-blur-sm border-2 border-white/30 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
                     Most Popular
