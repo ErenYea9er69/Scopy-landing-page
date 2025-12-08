@@ -10,18 +10,15 @@ const CTA: React.FC = () => {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)' // Added semi-transparent background
+        backgroundColor: 'rgba(0, 0, 0, 0.5)' 
       }}
     >
-      {/* Reduced overlay opacity and added gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/30"></div>
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center justify-between min-h-[80vh]">
           
-          {/* Left Side Content */}
           <div className="flex-1 text-left">
-            {/* Bold text at top left */}
             <motion.h1
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
