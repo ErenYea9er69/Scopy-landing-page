@@ -56,7 +56,7 @@ const Header: React.FC = () => {
         }}>
           <img
             src="/assets/logo.png"
-            alt="Scopy AI Logo"
+            alt="KWARET Logo"
             className="object-contain brightness-0 invert transition-all duration-500 ease-out"
             style={{
               height: isPillMode ? '24px' : '32px',
@@ -66,7 +66,7 @@ const Header: React.FC = () => {
           <span className="font-semibold transition-all duration-500 ease-out" style={{
             fontSize: isPillMode ? '18px' : '20px'
           }}>
-            Scopy AI
+            KWARET
           </span>
         </div>
 
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
           <nav className="hidden items-center md:flex transition-all duration-500 ease-out" style={{
             gap: isPillMode ? '16px' : '32px'
           }}>
-            {['home', 'features', 'pricing' ,'testimonials'].map((item) => (
+            {['home', 'shop', 'contact', 'redeem', 'faq'].map((item) => (
               <a
                 key={item}
                 href={`#${item}`}
@@ -136,7 +136,7 @@ const Header: React.FC = () => {
                   style={{
                     fontSize: isPillMode ? '14px' : '16px'
                   }}>
-                  Get Started
+                  Login
                 </span>
               </div>
             </div>
