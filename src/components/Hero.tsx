@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
         mixBlendMode="screen"
       />
 
-      <div className="container relative z-10 mx-auto flex flex-col justify-center px-6 lg:px-12 py-20 min-h-screen">
+      <div className="container relative z-10 mx-auto flex flex-col justify-center px-6 lg:px-12 py-20 min-h-screen pointer-events-none">
         {/* Text content */}
         <div className="w-full max-w-4xl text-white mb-12">
           <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-8">
@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="relative group"
             >
-              <div className="h-14 bg-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 overflow-hidden relative shadow-[0_0_20px_rgba(255,255,255,0.3)]">
+              <div className="h-14 bg-white rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-gray-100 hover:scale-105 overflow-hidden relative shadow-[0_0_20px_rgba(255,255,255,0.3)] pointer-events-auto">
                 <div className="flex items-center space-x-2 relative z-10">
                   <svg
                     className="w-5 h-5 text-black"
@@ -91,7 +91,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.9 }}
               className="relative group"
             >
-              <div className="h-14 bg-transparent border border-white/30 backdrop-blur-sm rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-white hover:scale-105 group">
+              <div className="h-14 bg-transparent border border-white/30 backdrop-blur-sm rounded-full flex items-center justify-center px-8 cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-white hover:scale-105 group pointer-events-auto">
                 <div className="flex items-center space-x-2">
                   <svg
                     className="w-5 h-5 text-white group-hover:text-white transition-colors duration-300"
