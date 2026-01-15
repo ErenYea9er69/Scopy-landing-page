@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   const words = ["Build", "Profitable", "Business", "Systems", "with", "AI"]; //Scopy Your AI Growth Team 
 
   return (
-    <section id="home" className="relative flex min-h-screen items-center bg-black overflow-hidden">
+    <section id="home" className="sticky top-0 flex min-h-screen items-center bg-black overflow-hidden">
       {/* Animated Floating Lines Background */}
       <FloatingLines
         linesGradient={['#a855f7', '#9333ea', '#7c3aed', '#6d28d9', '#5b21b6']}
