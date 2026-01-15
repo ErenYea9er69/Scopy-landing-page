@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
     <section id="home" className="relative flex min-h-screen items-center bg-black overflow-hidden">
       {/* Animated Floating Lines Background */}
       <FloatingLines
-        linesGradient={['#ffffff', '#9ca3af', '#6b7280', '#4b5563', '#374151']}
+        linesGradient={['#a855f7', '#9333ea', '#7c3aed', '#6d28d9', '#5b21b6']}
         enabledWaves={['top', 'middle', 'bottom']}
         lineCount={[8, 6, 10]}
         lineDistance={[4, 5, 3]}
